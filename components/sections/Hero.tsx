@@ -2,23 +2,30 @@
 
 import { motion } from 'framer-motion';
 import { FaArrowDown } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
 export default function Hero() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden">
       {/* Floating particles effect */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(50)].map((_, i) => (
+        {mounted && [...Array(50)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-indigo-500 rounded-full"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
               opacity: Math.random(),
             }}
             animate={{
-              y: [null, Math.random() * window.innerHeight],
+              y: [null, Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000)],
               opacity: [null, Math.random(), 0],
             }}
             transition={{
