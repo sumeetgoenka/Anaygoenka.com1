@@ -44,18 +44,17 @@ export default function WhoFor() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {audiences.map((item, index) => (
             <motion.div
               key={index}
-              className="flex items-start gap-4 p-6 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl hover:border-indigo-500/50 hover:bg-slate-800/70 transition-all"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              className="flex items-start gap-4"
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -5 }}
             >
               <div className="text-3xl text-indigo-400 flex-shrink-0">{item.icon}</div>
-              <p className="text-slate-300 text-base">{item.text}</p>
+              <p className="text-slate-300 text-lg">{item.text}</p>
             </motion.div>
           ))}
         </div>

@@ -13,6 +13,7 @@ export default function Pricing() {
     {
       icon: '💫',
       name: 'Starter Website',
+      price: '$27',
       perfectFor: 'Small businesses, school clubs, personal projects',
       timeline: '1-3 days',
       features: [
@@ -26,6 +27,7 @@ export default function Pricing() {
     {
       icon: '🚀',
       name: 'Professional Website',
+      price: '$77',
       perfectFor: 'Businesses, portfolios, content sites',
       timeline: '1-2 weeks',
       popular: true,
@@ -41,6 +43,7 @@ export default function Pricing() {
     {
       icon: '💎',
       name: 'Custom Web App',
+      price: 'Get Quote',
       perfectFor: 'SaaS ideas, complex tools, AI-powered platforms',
       timeline: '2-4 weeks (depends on complexity)',
       premium: true,
@@ -104,6 +107,9 @@ export default function Pricing() {
 
               <div className="text-5xl mb-4">{tier.icon}</div>
               <h3 className="text-2xl font-bold text-white mb-2">{tier.name}</h3>
+
+              <div className="text-4xl font-bold gradient-text mb-4">{tier.price}</div>
+
               <p className="text-indigo-400 text-sm font-semibold mb-4">Perfect for: {tier.perfectFor}</p>
 
               <div className="mb-6 pb-6 border-b border-slate-700">
@@ -136,7 +142,7 @@ export default function Pricing() {
                     : 'bg-slate-700 text-white hover:bg-slate-600'
                 }`}
               >
-                Get Quote
+                {tier.price === 'Get Quote' ? 'Get Quote' : 'Get Started'}
               </a>
             </motion.div>
           ))}

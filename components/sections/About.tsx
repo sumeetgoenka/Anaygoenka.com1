@@ -35,14 +35,13 @@ export default function About() {
             </motion.h2>
           </div>
 
-          {/* Content card */}
+          {/* Content */}
           <motion.div
-            className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-3xl p-8 md:p-12 card-hover"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            <div className="space-y-6 text-lg md:text-xl text-slate-300 leading-relaxed">
+            <div className="space-y-8 text-lg md:text-xl text-slate-300 leading-relaxed text-center">
               <p>
                 I&apos;m <span className="text-indigo-400 font-bold">Anay</span> — a{' '}
                 <span className="text-purple-400 font-semibold">13-year-old Dubai-based full-stack developer</span>{' '}
@@ -57,7 +56,7 @@ export default function About() {
               </p>
 
               {/* Key highlights */}
-              <div className="grid md:grid-cols-3 gap-6 mt-10">
+              <div className="grid md:grid-cols-3 gap-12 mt-16">
                 {[
                   { emoji: '🚀', title: 'Fast Builds', desc: 'No templates, pure custom code' },
                   { emoji: '🤖', title: 'AI-Powered', desc: 'Smart tools & chatbots' },
@@ -65,15 +64,14 @@ export default function About() {
                 ].map((item, index) => (
                   <motion.div
                     key={index}
-                    className="text-center p-6 bg-slate-700/30 rounded-2xl border border-slate-600"
+                    className="text-center"
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.6 + index * 0.1 }}
-                    whileHover={{ scale: 1.05, borderColor: '#6366f1' }}
                   >
-                    <div className="text-4xl mb-3">{item.emoji}</div>
-                    <h3 className="text-white font-bold text-lg mb-2">{item.title}</h3>
-                    <p className="text-slate-400 text-sm">{item.desc}</p>
+                    <div className="text-5xl mb-4">{item.emoji}</div>
+                    <h3 className="text-white font-bold text-xl mb-2">{item.title}</h3>
+                    <p className="text-slate-400">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>

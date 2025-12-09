@@ -87,22 +87,17 @@ export default function Services() {
         </motion.div>
 
         {/* Services grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className={`p-6 rounded-2xl border backdrop-blur-sm transition-all duration-300 ${
-                service.featured
-                  ? 'bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border-indigo-500/50 card-hover'
-                  : 'bg-slate-800/30 border-slate-700 hover:border-indigo-500/50 hover:bg-slate-800/50'
-              }`}
+              className="text-center"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -5 }}
             >
               <div
-                className={`text-4xl mb-4 ${
+                className={`text-5xl mb-4 ${
                   service.featured ? 'text-indigo-400' : 'text-purple-400'
                 }`}
               >
@@ -110,6 +105,7 @@ export default function Services() {
               </div>
               <h3 className="text-white font-bold text-lg mb-3">{service.title}</h3>
               <p className="text-slate-400 text-sm leading-relaxed">{service.description}</p>
+              {service.featured && <div className="mt-2 text-indigo-400 text-xs font-semibold">⭐ SPECIALTY</div>}
             </motion.div>
           ))}
         </div>
