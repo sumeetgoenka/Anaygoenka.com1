@@ -83,23 +83,17 @@ export default function Pricing() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
           {tiers.map((tier, index) => (
             <motion.div
               key={index}
-              className={`relative rounded-3xl p-8 ${
-                tier.popular
-                  ? 'bg-gradient-to-br from-indigo-600/20 to-purple-600/20 border-2 border-indigo-500 scale-105'
-                  : tier.premium
-                  ? 'bg-slate-800/70 border-2 border-purple-500/50'
-                  : 'bg-slate-800/50 border border-slate-700'
-              } backdrop-blur-sm card-hover`}
+              className="relative text-center"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.15, duration: 0.6 }}
             >
               {tier.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white text-sm font-bold flex items-center gap-1">
+                <div className="mb-4 inline-block px-4 py-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white text-xs font-bold flex items-center gap-1">
                   <FaStar className="text-xs" />
                   MOST POPULAR
                 </div>

@@ -16,16 +16,55 @@ export default function Contact() {
     message: '',
   });
   const [status, setStatus] = useState('');
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [submittedEmail, setSubmittedEmail] = useState('');
+
+  const validateForm = () => {
+    const newErrors: {[key: string]: string} = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
+
+    if (!formData.projectType) {
+      newErrors.projectType = 'Please select a project type';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Please tell me about your project';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Please provide more details (at least 10 characters)';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setStatus('sending');
+    setErrors({});
+
+    // Save email before clearing form
+    const emailToShow = formData.email;
 
     // Simulate form submission (you'll need to set up a real backend or email service)
     setTimeout(() => {
       setStatus('success');
+      setSubmittedEmail(emailToShow);
       setFormData({ name: '', email: '', projectType: '', budget: '', message: '' });
-      setTimeout(() => setStatus(''), 3000);
+      setTimeout(() => setStatus(''), 5000);
     }, 1500);
   };
 
@@ -74,10 +113,12 @@ export default function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white focus:border-indigo-500 focus:outline-none transition-colors"
+                  className={`w-full px-4 py-3 bg-slate-800 border rounded-xl text-white focus:outline-none transition-colors ${
+                    errors.name ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-indigo-500'
+                  }`}
                   placeholder="Your name"
                 />
+                {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
               </div>
 
               <div>
@@ -90,10 +131,12 @@ export default function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white focus:border-indigo-500 focus:outline-none transition-colors"
+                  className={`w-full px-4 py-3 bg-slate-800 border rounded-xl text-white focus:outline-none transition-colors ${
+                    errors.email ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-indigo-500'
+                  }`}
                   placeholder="your@email.com"
                 />
+                {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
               </div>
 
               <div>
@@ -105,8 +148,9 @@ export default function Contact() {
                   name="projectType"
                   value={formData.projectType}
                   onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white focus:border-indigo-500 focus:outline-none transition-colors"
+                  className={`w-full px-4 py-3 bg-slate-800 border rounded-xl text-white focus:outline-none transition-colors ${
+                    errors.projectType ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-indigo-500'
+                  }`}
                 >
                   <option value="">Select a project type</option>
                   <option value="starter">Starter Website</option>
@@ -115,6 +159,7 @@ export default function Contact() {
                   <option value="ai-chatbot">AI Chatbot</option>
                   <option value="other">Other</option>
                 </select>
+                {errors.projectType && <p className="text-red-400 text-sm mt-1">{errors.projectType}</p>}
               </div>
 
               <div>
@@ -141,22 +186,30 @@ export default function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  required
                   rows={5}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white focus:border-indigo-500 focus:outline-none transition-colors resize-none"
+                  className={`w-full px-4 py-3 bg-slate-800 border rounded-xl text-white focus:outline-none transition-colors resize-none ${
+                    errors.message ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-indigo-500'
+                  }`}
                   placeholder="Tell me about your project..."
                 />
+                {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
               </div>
 
               <button
                 type="submit"
-                disabled={status === 'sending'}
+                disabled={status === 'sending' || status === 'success'}
                 className="w-full px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl text-white font-bold text-lg hover:from-indigo-500 hover:to-purple-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
               >
                 {status === 'sending' ? (
-                  'Sending...'
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    Sending...
+                  </>
                 ) : status === 'success' ? (
-                  'Sent! 🎉'
+                  <>
+                    <span className="text-2xl">✓</span>
+                    Message Sent Successfully!
+                  </>
                 ) : (
                   <>
                     Send Message
@@ -164,6 +217,13 @@ export default function Contact() {
                   </>
                 )}
               </button>
+
+              {status === 'success' && (
+                <div className="bg-green-500/10 border border-green-500/50 rounded-xl p-4 text-center">
+                  <p className="text-green-400 font-semibold mb-1">Thanks for reaching out!</p>
+                  <p className="text-slate-300 text-sm">I&apos;ll get back to you within 24 hours at {submittedEmail}.</p>
+                </div>
+              )}
             </form>
           </motion.div>
 
@@ -184,10 +244,10 @@ export default function Contact() {
                 </div>
               </div>
               <a
-                href="mailto:your-email@example.com"
+                href="mailto:anay@anaygoenka.com"
                 className="text-indigo-400 hover:text-indigo-300 transition-colors font-semibold"
               >
-                your-email@example.com
+                anay@anaygoenka.com
               </a>
             </div>
 

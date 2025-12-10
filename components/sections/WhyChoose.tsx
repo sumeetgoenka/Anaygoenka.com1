@@ -63,20 +63,20 @@ export default function WhyChoose() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
           {reasons.map((reason, index) => (
             <motion.div
               key={index}
-              className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-3xl p-8 hover:border-indigo-500/50 hover:bg-slate-800/70 transition-all card-hover"
+              className="text-center"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.6 }}
             >
-              <div className="text-5xl text-indigo-400 mb-6">{reason.icon}</div>
-              <h3 className="text-2xl font-bold text-white mb-4">{reason.title}</h3>
-              <ul className="space-y-2">
+              <div className="text-5xl text-indigo-400 mb-4">{reason.icon}</div>
+              <h3 className="text-xl font-bold text-white mb-3">{reason.title}</h3>
+              <ul className="space-y-2 text-left">
                 {reason.points.map((point, i) => (
-                  <li key={i} className="text-slate-300 flex items-start gap-2">
+                  <li key={i} className="text-slate-400 text-sm flex items-start gap-2">
                     <span className="text-indigo-400 mt-1">•</span>
                     <span>{point}</span>
                   </li>

@@ -20,9 +20,15 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-2xl font-bold gradient-text mb-4">ANAY</h3>
-            <p className="text-slate-400 leading-relaxed">
+            <p className="text-slate-400 leading-relaxed mb-4">
               13-year-old full-stack developer building modern websites, AI tools, and web apps in Dubai.
             </p>
+            <a
+              href="mailto:anay@anaygoenka.com"
+              className="text-indigo-400 hover:text-indigo-300 transition-colors"
+            >
+              anay@anaygoenka.com
+            </a>
           </div>
 
           {/* Quick Links */}
@@ -47,7 +53,7 @@ export default function Footer() {
             <h4 className="text-white font-bold text-lg mb-4">Connect</h4>
             <div className="flex gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/anaygoenka"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-700 transition-all"
@@ -55,7 +61,7 @@ export default function Footer() {
                 <FaGithub className="text-xl" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://twitter.com/anaygoenka"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-700 transition-all"
@@ -63,7 +69,7 @@ export default function Footer() {
                 <FaTwitter className="text-xl" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/anaygoenka"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-700 transition-all"

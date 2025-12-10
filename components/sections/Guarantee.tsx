@@ -14,35 +14,33 @@ export default function Guarantee() {
       <div className="container mx-auto px-6" ref={ref}>
         <motion.div
           className="max-w-3xl mx-auto text-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <div className="bg-gradient-to-br from-green-600/20 to-emerald-600/20 backdrop-blur-sm border-2 border-green-500/50 rounded-3xl p-12">
-            {/* Icon */}
-            <motion.div
-              className="inline-block mb-6"
-              animate={isInView ? { rotate: [0, 5, -5, 0] } : {}}
-              transition={{ duration: 1, delay: 0.3 }}
-            >
-              <FaShieldAlt className="text-7xl text-green-400" />
-            </motion.div>
+          {/* Icon */}
+          <motion.div
+            className="inline-block mb-6"
+            animate={isInView ? { rotate: [0, 5, -5, 0] } : {}}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            <FaShieldAlt className="text-7xl text-green-400" />
+          </motion.div>
 
-            {/* Title */}
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              🔒 <span className="gradient-text">My Promise</span>
-            </h2>
+          {/* Title */}
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+            🔒 <span className="gradient-text">My Promise</span>
+          </h2>
 
-            {/* Promise */}
-            <p className="text-2xl md:text-3xl text-slate-200 leading-relaxed mb-6">
-              If you don&apos;t love the first draft,
-              <br />
-              <span className="text-green-400 font-bold">I&apos;ll redo it until you&apos;re happy</span>
-              <br />— no extra cost.
-            </p>
+          {/* Promise */}
+          <p className="text-2xl md:text-3xl text-slate-300 leading-relaxed mb-6">
+            If you don&apos;t love the first draft,
+            <br />
+            <span className="text-green-400 font-bold">I&apos;ll redo it until you&apos;re happy</span>
+            <br />— no extra cost.
+          </p>
 
-            <p className="text-slate-400 text-lg">Zero risk. Pure confidence. That&apos;s the vibe.</p>
-          </div>
+          <p className="text-slate-400 text-lg">Zero risk. Pure confidence. That&apos;s the vibe.</p>
         </motion.div>
       </div>
     </section>

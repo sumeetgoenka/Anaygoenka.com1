@@ -91,13 +91,13 @@ export default function Process() {
                 {step.number}
               </div>
 
-              {/* Content card */}
-              <div className="flex-grow bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 hover:border-indigo-500/50 hover:bg-slate-800/70 transition-all card-hover">
+              {/* Content */}
+              <div className="flex-grow">
                 <div className="flex items-start gap-4">
-                  <div className="text-3xl text-indigo-400">{step.icon}</div>
+                  <div className="text-4xl text-indigo-400">{step.icon}</div>
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-2">{step.title}</h3>
-                    <p className="text-slate-300 leading-relaxed">{step.description}</p>
+                    <p className="text-slate-400 leading-relaxed">{step.description}</p>
                   </div>
                 </div>
               </div>

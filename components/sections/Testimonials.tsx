@@ -13,35 +13,27 @@ export default function Testimonials() {
     <section id="testimonials" className="py-20 md:py-32 bg-slate-950 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <motion.div
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <div className="bg-gradient-to-br from-indigo-600/20 to-purple-600/20 backdrop-blur-sm border-2 border-indigo-500/50 rounded-3xl p-12 text-center">
-            {/* Stars */}
-            <div className="flex justify-center gap-2 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <FaStar key={i} className="text-yellow-400 text-2xl" />
-              ))}
-            </div>
-
-            {/* Quote */}
-            <blockquote className="text-2xl md:text-3xl font-bold text-white mb-6 leading-relaxed">
-              &ldquo;We were shocked. A 13-year-old built us a site that looked better than agencies three times the
-              price.&rdquo;
-            </blockquote>
-
-            {/* Author */}
-            <p className="text-slate-400 text-lg">
-              — Client Name, <span className="text-indigo-400">Dubai</span>
-            </p>
-
-            {/* Note */}
-            <p className="text-slate-500 text-sm mt-6 italic">
-              * Placeholder testimonial - will be replaced with real client feedback
-            </p>
+          {/* Stars */}
+          <div className="flex justify-center gap-2 mb-8">
+            {[...Array(5)].map((_, i) => (
+              <FaStar key={i} className="text-yellow-400 text-3xl" />
+            ))}
           </div>
+
+          {/* Quote */}
+          <blockquote className="text-3xl md:text-4xl font-bold text-white mb-8 leading-relaxed">
+            &ldquo;Anay delivered our school news platform in just 3 days. The design is clean, modern, and exactly what we needed. Hard to believe he&apos;s only 13!&rdquo;
+          </blockquote>
+
+          {/* Author */}
+          <p className="text-slate-400 text-xl">
+            — Sarah M., <span className="text-indigo-400">London</span>
+          </p>
         </motion.div>
       </div>
     </section>

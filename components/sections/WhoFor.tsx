@@ -18,13 +18,26 @@ export default function WhoFor() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const audiences = [
-    { icon: <FaStore />, text: 'Small businesses needing a fresh online presence' },
-    { icon: <FaUsers />, text: 'School clubs, teams, competitions' },
-    { icon: <FaChalkboardTeacher />, text: 'Teachers needing tools/dashboards' },
-    { icon: <FaLightbulb />, text: 'Students launching side projects' },
-    { icon: <FaHome />, text: 'Families wanting personal sites' },
-    { icon: <FaRocket />, text: 'Anyone starting a new idea or micro-startup' },
-    { icon: <FaDollarSign />, text: 'Anyone who wants a fast + aesthetic website without paying agency prices' },
+    {
+      icon: <FaStore />,
+      title: 'Small Businesses & Local Services',
+      text: 'You need a professional online presence fast, but agency quotes are $5,000+ and take months. You want modern design, mobile-friendly, and ready in days—not weeks.',
+    },
+    {
+      icon: <FaRocket />,
+      title: 'Entrepreneurs & Micro-Startups',
+      text: 'You\'re launching a new idea and need an MVP website to validate it. You can\'t afford to waste time or money on complex solutions when you need to move fast and test the market.',
+    },
+    {
+      icon: <FaUsers />,
+      title: 'Schools, Clubs & Organizations',
+      text: 'Your team needs a clean, functional website for news, events, or members. You don\'t have a big budget, but you still want something that looks professional and works perfectly.',
+    },
+    {
+      icon: <FaDollarSign />,
+      title: 'Anyone Wanting Quality Without Agency Prices',
+      text: 'You know what you want but you\'re tired of overpriced quotes and complicated processes. You want a developer who delivers fast, communicates clearly, and doesn\'t charge $10K for a landing page.',
+    },
   ];
 
   return (
@@ -44,17 +57,20 @@ export default function WhoFor() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {audiences.map((item, index) => (
             <motion.div
               key={index}
-              className="flex items-start gap-4"
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              className="flex items-start gap-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <div className="text-3xl text-indigo-400 flex-shrink-0">{item.icon}</div>
-              <p className="text-slate-300 text-lg">{item.text}</p>
+              <div className="text-3xl text-indigo-400 flex-shrink-0 mt-1">{item.icon}</div>
+              <div>
+                <h3 className="text-white font-bold text-xl mb-2">{item.title}</h3>
+                <p className="text-slate-400 leading-relaxed">{item.text}</p>
+              </div>
             </motion.div>
           ))}
         </div>

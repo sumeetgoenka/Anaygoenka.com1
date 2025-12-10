@@ -37,7 +37,7 @@ export default function Hero() {
 
           {/* Subheadline */}
           <motion.p
-            className="text-xl md:text-2xl lg:text-3xl text-slate-300 mb-12 max-w-4xl mx-auto"
+            className="text-xl md:text-2xl lg:text-3xl text-slate-300 mb-8 max-w-4xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -46,6 +46,17 @@ export default function Hero() {
             <br />
             <span className="text-indigo-400">Full-stack builds with teen energy.</span>
           </motion.p>
+
+          {/* AI Chatbot Specialty Badge */}
+          <motion.div
+            className="mb-12 inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border border-indigo-500/50 rounded-full"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            <span className="text-2xl">🤖</span>
+            <span className="text-indigo-300 font-semibold">Specialty: AI Chatbots & Intelligent Automation</span>
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
