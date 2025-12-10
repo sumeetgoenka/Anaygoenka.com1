@@ -41,7 +41,7 @@ export default function WhoFor() {
   ];
 
   return (
-    <section id="who-for" className="py-20 md:py-32 bg-slate-950 relative overflow-hidden">
+    <section id="who-for" className="py-20 md:py-32 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <motion.div
           className="text-center mb-16"
@@ -52,7 +52,7 @@ export default function WhoFor() {
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="gradient-text">🎯 Who I Build For</span>
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
             If you see yourself here, we&apos;re a perfect match.
           </p>
         </motion.div>
@@ -61,15 +61,15 @@ export default function WhoFor() {
           {audiences.map((item, index) => (
             <motion.div
               key={index}
-              className="flex items-start gap-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 transition-colors"
+              className="flex items-start gap-4 bg-gray-50/50 p-6 rounded-2xl border border-slate-200 hover:border-blue-600/50 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <div className="text-3xl text-indigo-400 flex-shrink-0 mt-1">{item.icon}</div>
+              <div className="text-3xl text-blue-600 flex-shrink-0 mt-1">{item.icon}</div>
               <div>
-                <h3 className="text-white font-bold text-xl mb-2">{item.title}</h3>
-                <p className="text-slate-400 leading-relaxed">{item.text}</p>
+                <h3 className="text-slate-900 font-bold text-xl mb-2">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{item.text}</p>
               </div>
             </motion.div>
           ))}

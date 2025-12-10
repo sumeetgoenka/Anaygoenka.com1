@@ -10,7 +10,7 @@ export default function Testimonials() {
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
-    <section id="testimonials" className="py-20 md:py-32 bg-slate-950 relative overflow-hidden">
+    <section id="testimonials" className="py-20 md:py-32 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         <motion.div
           className="max-w-4xl mx-auto text-center"
@@ -26,13 +26,13 @@ export default function Testimonials() {
           </div>
 
           {/* Quote */}
-          <blockquote className="text-3xl md:text-4xl font-bold text-white mb-8 leading-relaxed">
+          <blockquote className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 leading-relaxed">
             &ldquo;Anay delivered our school news platform in just 3 days. The design is clean, modern, and exactly what we needed. Hard to believe he&apos;s only 13!&rdquo;
           </blockquote>
 
           {/* Author */}
-          <p className="text-slate-400 text-xl">
-            — Sarah M., <span className="text-indigo-400">London</span>
+          <p className="text-slate-600 text-xl">
+            — Sarah M., <span className="text-blue-600">London</span>
           </p>
         </motion.div>
       </div>

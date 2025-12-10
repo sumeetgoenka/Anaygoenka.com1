@@ -49,10 +49,10 @@ export default function Process() {
   ];
 
   return (
-    <section id="process" className="py-20 md:py-32 bg-slate-900 relative overflow-hidden">
+    <section id="process" className="py-20 md:py-32 bg-gray-50 relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-600 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600 rounded-full filter blur-3xl"></div>
       </div>
 
@@ -66,7 +66,7 @@ export default function Process() {
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="gradient-text">🔄 My Process</span>
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
             Clear, simple, teen-friendly vibe. No corporate BS.
           </p>
         </motion.div>
@@ -83,21 +83,21 @@ export default function Process() {
             >
               {/* Connector line */}
               {index !== steps.length - 1 && (
-                <div className="absolute left-6 md:left-auto md:right-1/2 top-20 md:top-auto md:bottom-0 w-0.5 h-full md:w-full md:h-0.5 bg-gradient-to-b md:bg-gradient-to-r from-indigo-500 to-purple-600 opacity-30"></div>
+                <div className="absolute left-6 md:left-auto md:right-1/2 top-20 md:top-auto md:bottom-0 w-0.5 h-full md:w-full md:h-0.5 bg-gradient-to-b md:bg-gradient-to-r from-blue-600 to-orange-600 opacity-30"></div>
               )}
 
               {/* Step number circle */}
-              <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full text-white font-bold text-xl shadow-lg shadow-indigo-500/50 z-10">
+              <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full text-slate-900 font-bold text-xl shadow-lg shadow-blue-600/50 z-10">
                 {step.number}
               </div>
 
               {/* Content */}
               <div className="flex-grow">
                 <div className="flex items-start gap-4">
-                  <div className="text-4xl text-indigo-400">{step.icon}</div>
+                  <div className="text-4xl text-blue-600">{step.icon}</div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-2">{step.title}</h3>
-                    <p className="text-slate-400 leading-relaxed">{step.description}</p>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">{step.title}</h3>
+                    <p className="text-slate-600 leading-relaxed">{step.description}</p>
                   </div>
                 </div>
               </div>

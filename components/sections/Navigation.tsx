@@ -28,7 +28,7 @@ export default function Navigation() {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-slate-200' : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -47,14 +47,14 @@ export default function Navigation() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-slate-300 hover:text-indigo-400 transition-colors font-medium"
+                className="text-slate-700 hover:text-blue-600 transition-colors font-medium"
               >
                 {link.name}
               </a>
             ))}
             <a
               href="#contact"
-              className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all"
+              className="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all"
             >
               Get Started
             </a>
@@ -62,7 +62,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white text-2xl"
+            className="md:hidden text-slate-900 text-2xl"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
@@ -74,7 +74,7 @@ export default function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden bg-slate-900/98 backdrop-blur-lg"
+            className="md:hidden bg-white/98 backdrop-blur-lg border-b border-slate-200"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -85,7 +85,7 @@ export default function Navigation() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-slate-300 hover:text-indigo-400 transition-colors font-medium text-lg"
+                  className="text-slate-700 hover:text-blue-600 transition-colors font-medium text-lg"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -93,7 +93,7 @@ export default function Navigation() {
               ))}
               <a
                 href="#contact"
-                className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all text-center"
+                className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Get Started

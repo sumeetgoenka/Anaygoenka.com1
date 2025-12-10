@@ -73,11 +73,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-slate-900 relative overflow-hidden">
+    <section id="contact" className="py-20 md:py-32 bg-gray-50 relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-indigo-600 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-600 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-orange-600 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
@@ -90,7 +90,7 @@ export default function Contact() {
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="gradient-text">Let&apos;s Build Together</span>
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
             Ready to create something amazing? Drop me a message and let&apos;s make it happen.
           </p>
         </motion.div>
@@ -104,7 +104,7 @@ export default function Contact() {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-slate-300 font-semibold mb-2">
+                <label htmlFor="name" className="block text-slate-700 font-semibold mb-2">
                   Name
                 </label>
                 <input
@@ -113,8 +113,8 @@ export default function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-slate-800 border rounded-xl text-white focus:outline-none transition-colors ${
-                    errors.name ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-indigo-500'
+                  className={`w-full px-4 py-3 bg-white border rounded-xl text-slate-900 focus:outline-none transition-colors ${
+                    errors.name ? 'border-red-500 focus:border-red-500' : 'border-slate-300 focus:border-blue-600'
                   }`}
                   placeholder="Your name"
                 />
@@ -122,7 +122,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-slate-300 font-semibold mb-2">
+                <label htmlFor="email" className="block text-slate-700 font-semibold mb-2">
                   Email
                 </label>
                 <input
@@ -131,8 +131,8 @@ export default function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-slate-800 border rounded-xl text-white focus:outline-none transition-colors ${
-                    errors.email ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-indigo-500'
+                  className={`w-full px-4 py-3 bg-white border rounded-xl text-slate-900 focus:outline-none transition-colors ${
+                    errors.email ? 'border-red-500 focus:border-red-500' : 'border-slate-300 focus:border-blue-600'
                   }`}
                   placeholder="your@email.com"
                 />
@@ -140,7 +140,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="projectType" className="block text-slate-300 font-semibold mb-2">
+                <label htmlFor="projectType" className="block text-slate-700 font-semibold mb-2">
                   Project Type
                 </label>
                 <select
@@ -148,8 +148,8 @@ export default function Contact() {
                   name="projectType"
                   value={formData.projectType}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-slate-800 border rounded-xl text-white focus:outline-none transition-colors ${
-                    errors.projectType ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-indigo-500'
+                  className={`w-full px-4 py-3 bg-white border rounded-xl text-slate-900 focus:outline-none transition-colors ${
+                    errors.projectType ? 'border-red-500 focus:border-red-500' : 'border-slate-300 focus:border-blue-600'
                   }`}
                 >
                   <option value="">Select a project type</option>
@@ -163,7 +163,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="budget" className="block text-slate-300 font-semibold mb-2">
+                <label htmlFor="budget" className="block text-slate-700 font-semibold mb-2">
                   Budget Range (Optional)
                 </label>
                 <input
@@ -172,13 +172,13 @@ export default function Contact() {
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white focus:border-indigo-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-slate-900 focus:border-blue-600 focus:outline-none transition-colors"
                   placeholder="e.g., $500-$1000"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-slate-300 font-semibold mb-2">
+                <label htmlFor="message" className="block text-slate-700 font-semibold mb-2">
                   Message
                 </label>
                 <textarea
@@ -187,8 +187,8 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  className={`w-full px-4 py-3 bg-slate-800 border rounded-xl text-white focus:outline-none transition-colors resize-none ${
-                    errors.message ? 'border-red-500 focus:border-red-500' : 'border-slate-700 focus:border-indigo-500'
+                  className={`w-full px-4 py-3 bg-white border rounded-xl text-slate-900 focus:outline-none transition-colors resize-none ${
+                    errors.message ? 'border-red-500 focus:border-red-500' : 'border-slate-300 focus:border-blue-600'
                   }`}
                   placeholder="Tell me about your project..."
                 />
@@ -198,7 +198,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === 'sending' || status === 'success'}
-                className="w-full px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl text-white font-bold text-lg hover:from-indigo-500 hover:to-purple-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                className="w-full px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl text-slate-900 font-bold text-lg hover:from-blue-600 hover:to-orange-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
               >
                 {status === 'sending' ? (
                   <>
@@ -221,7 +221,7 @@ export default function Contact() {
               {status === 'success' && (
                 <div className="bg-green-500/10 border border-green-500/50 rounded-xl p-4 text-center">
                   <p className="text-green-400 font-semibold mb-1">Thanks for reaching out!</p>
-                  <p className="text-slate-300 text-sm">I&apos;ll get back to you within 24 hours at {submittedEmail}.</p>
+                  <p className="text-slate-700 text-sm">I&apos;ll get back to you within 24 hours at {submittedEmail}.</p>
                 </div>
               )}
             </form>
@@ -235,47 +235,47 @@ export default function Contact() {
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             {/* Email */}
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-3xl p-8">
+            <div className="bg-white/50 backdrop-blur-sm border border-slate-300 rounded-3xl p-8">
               <div className="flex items-center gap-4 mb-4">
-                <FaEnvelope className="text-4xl text-indigo-400" />
+                <FaEnvelope className="text-4xl text-blue-600" />
                 <div>
-                  <h3 className="text-xl font-bold text-white">Email Me</h3>
-                  <p className="text-slate-400">Get a response within 24 hours</p>
+                  <h3 className="text-xl font-bold text-slate-900">Email Me</h3>
+                  <p className="text-slate-600">Get a response within 24 hours</p>
                 </div>
               </div>
               <a
                 href="mailto:anay@anaygoenka.com"
-                className="text-indigo-400 hover:text-indigo-300 transition-colors font-semibold"
+                className="text-blue-600 hover:text-blue-500 transition-colors font-semibold"
               >
                 anay@anaygoenka.com
               </a>
             </div>
 
             {/* Process */}
-            <div className="bg-gradient-to-br from-indigo-600/20 to-purple-600/20 backdrop-blur-sm border border-indigo-500/50 rounded-3xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">The Process</h3>
-              <div className="space-y-2 text-slate-300">
+            <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 backdrop-blur-sm border border-blue-600/50 rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">The Process</h3>
+              <div className="space-y-2 text-slate-700">
                 <p className="flex items-center gap-2">
-                  <span className="text-indigo-400">1.</span> Ask a few questions
+                  <span className="text-blue-600">1.</span> Ask a few questions
                 </p>
                 <p className="flex items-center gap-2">
-                  <span className="text-indigo-400">2.</span> I send a quote
+                  <span className="text-blue-600">2.</span> I send a quote
                 </p>
                 <p className="flex items-center gap-2">
-                  <span className="text-indigo-400">3.</span> You approve
+                  <span className="text-blue-600">3.</span> You approve
                 </p>
                 <p className="flex items-center gap-2">
-                  <span className="text-indigo-400">4.</span> I build
+                  <span className="text-blue-600">4.</span> I build
                 </p>
                 <p className="flex items-center gap-2">
-                  <span className="text-indigo-400">5.</span> You flex 🔥
+                  <span className="text-blue-600">5.</span> You flex 🔥
                 </p>
               </div>
             </div>
 
             {/* Availability */}
-            <div className="text-center p-6 bg-slate-800/30 rounded-2xl border border-slate-700">
-              <p className="text-slate-300">
+            <div className="text-center p-6 bg-white/30 rounded-2xl border border-slate-300">
+              <p className="text-slate-700">
                 <span className="text-green-400 text-2xl">●</span> Available for new projects
               </p>
             </div>

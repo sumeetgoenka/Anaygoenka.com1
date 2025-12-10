@@ -65,7 +65,7 @@ export default function Portfolio() {
   ];
 
   return (
-    <section id="portfolio" className="py-20 md:py-32 bg-slate-900 relative overflow-hidden">
+    <section id="portfolio" className="py-20 md:py-32 bg-gray-50 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
         {/* Section header */}
         <motion.div
@@ -77,7 +77,7 @@ export default function Portfolio() {
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="gradient-text">My Work</span>
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
             Real projects. Live websites. Built from scratch with modern tech.
           </p>
         </motion.div>
@@ -93,39 +93,39 @@ export default function Portfolio() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
             >
               {project.icon && (
-                <div className="text-indigo-400 mb-4 flex justify-center">
+                <div className="text-blue-600 mb-4 flex justify-center">
                   {project.icon}
                 </div>
               )}
 
-              <h3 className="text-3xl font-bold text-white mb-3">{project.title}</h3>
+              <h3 className="text-3xl font-bold text-slate-900 mb-3">{project.title}</h3>
 
-              <p className="text-xl text-slate-300 italic mb-6">
+              <p className="text-xl text-slate-700 italic mb-6">
                 &ldquo;{project.tagline}&rdquo;
               </p>
 
               {/* Case Study Structure */}
               <div className="text-left max-w-2xl mx-auto mb-6 space-y-4">
                 <div>
-                  <h4 className="text-indigo-400 font-semibold mb-1">Problem</h4>
-                  <p className="text-slate-400">{project.problem}</p>
+                  <h4 className="text-blue-600 font-semibold mb-1">Problem</h4>
+                  <p className="text-slate-600">{project.problem}</p>
                 </div>
                 <div>
-                  <h4 className="text-indigo-400 font-semibold mb-1">Solution</h4>
-                  <p className="text-slate-400">{project.solution}</p>
+                  <h4 className="text-blue-600 font-semibold mb-1">Solution</h4>
+                  <p className="text-slate-600">{project.solution}</p>
                 </div>
                 <div>
                   <h4 className="text-green-400 font-semibold mb-1">Outcome</h4>
-                  <p className="text-slate-300 font-medium">{project.outcome}</p>
+                  <p className="text-slate-700 font-medium">{project.outcome}</p>
                 </div>
               </div>
 
-              <div className="text-indigo-400 text-sm font-semibold mb-6">
+              <div className="text-blue-600 text-sm font-semibold mb-6">
                 {project.tech}
               </div>
 
               {project.featured && (
-                <div className="mb-6 text-indigo-300 text-sm">
+                <div className="mb-6 text-blue-500 text-sm">
                   ⭐ This is my specialty - building intelligent chatbots that actually help users
                 </div>
               )}
@@ -134,7 +134,7 @@ export default function Portfolio() {
                 href={project.link}
                 target={project.link.startsWith('http') ? '_blank' : '_self'}
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors font-semibold"
+                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-500 transition-colors font-semibold"
               >
                 {project.link.startsWith('http') ? 'View Live' : 'Get Started'}
                 <FaExternalLinkAlt className="text-sm" />

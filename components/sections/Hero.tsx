@@ -5,7 +5,7 @@ import { FaArrowDown } from 'react-icons/fa';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden border-b border-slate-200">
       {/* Main content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
         <motion.div
@@ -15,7 +15,7 @@ export default function Hero() {
         >
           {/* Small intro text */}
           <motion.p
-            className="text-cyan-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-4"
+            className="text-blue-600 text-sm md:text-base font-semibold tracking-wider uppercase mb-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -32,30 +32,30 @@ export default function Hero() {
           >
             <span className="gradient-text">Websites so good,</span>
             <br />
-            <span className="text-white">people forget I&apos;m 13.</span>
+            <span className="text-slate-900">people forget I&apos;m 13.</span>
           </motion.h1>
 
           {/* Subheadline */}
           <motion.p
-            className="text-xl md:text-2xl lg:text-3xl text-slate-300 mb-8 max-w-4xl mx-auto"
+            className="text-xl md:text-2xl lg:text-3xl text-slate-700 mb-8 max-w-4xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             Fast. Modern. Aesthetic. AI-Powered.
             <br />
-            <span className="text-indigo-400">Full-stack builds with teen energy.</span>
+            <span className="text-blue-600">Full-stack builds with teen energy.</span>
           </motion.p>
 
           {/* AI Chatbot Specialty Badge */}
           <motion.div
-            className="mb-12 inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 border border-indigo-500/50 rounded-full"
+            className="mb-12 inline-flex items-center gap-3 px-6 py-3 bg-white border-2 border-blue-600 rounded-full shadow-lg"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6 }}
           >
             <span className="text-2xl">🤖</span>
-            <span className="text-indigo-300 font-semibold">Specialty: AI Chatbots & Intelligent Automation</span>
+            <span className="text-blue-600 font-semibold">Specialty: AI Chatbots & Intelligent Automation</span>
           </motion.div>
 
           {/* CTA Buttons */}
@@ -67,13 +67,13 @@ export default function Hero() {
           >
             <a
               href="#portfolio"
-              className="btn-glow px-10 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white font-bold text-lg hover:from-indigo-500 hover:to-purple-500 transition-all"
+              className="btn-glow px-10 py-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition-all"
             >
               View Portfolio
             </a>
             <a
               href="#contact"
-              className="px-10 py-4 border-2 border-indigo-500 rounded-full text-white font-bold text-lg hover:bg-indigo-500/20 transition-all"
+              className="px-10 py-4 border-2 border-blue-600 rounded-full text-blue-600 font-bold text-lg hover:bg-blue-50 transition-all"
             >
               Build With Me
             </a>
@@ -96,7 +96,7 @@ export default function Hero() {
                 <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
                   {stat.number}
                 </div>
-                <div className="text-slate-400 text-sm">{stat.label}</div>
+                <div className="text-slate-600 text-sm">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -109,7 +109,7 @@ export default function Hero() {
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <a href="#about" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+        <a href="#about" className="text-blue-600 hover:text-blue-700 transition-colors">
           <FaArrowDown className="text-3xl" />
         </a>
       </motion.div>

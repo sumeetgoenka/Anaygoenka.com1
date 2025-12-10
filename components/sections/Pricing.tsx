@@ -61,11 +61,11 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="py-20 md:py-32 bg-slate-900 relative overflow-hidden">
+    <section id="pricing" className="py-20 md:py-32 bg-gray-50 relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-indigo-600 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-600 rounded-full filter blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
@@ -78,7 +78,7 @@ export default function Pricing() {
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="gradient-text">Pricing</span>
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
             Transparent pricing. No hidden fees. Just honest work.
           </p>
         </motion.div>
@@ -93,38 +93,38 @@ export default function Pricing() {
               transition={{ delay: index * 0.15, duration: 0.6 }}
             >
               {tier.popular && (
-                <div className="mb-4 inline-block px-4 py-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white text-xs font-bold flex items-center gap-1">
+                <div className="mb-4 inline-block px-4 py-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-slate-900 text-xs font-bold flex items-center gap-1">
                   <FaStar className="text-xs" />
                   MOST POPULAR
                 </div>
               )}
 
               <div className="text-5xl mb-4">{tier.icon}</div>
-              <h3 className="text-2xl font-bold text-white mb-2">{tier.name}</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">{tier.name}</h3>
 
               <div className="text-4xl font-bold gradient-text mb-4">{tier.price}</div>
 
-              <p className="text-indigo-400 text-sm font-semibold mb-4">Perfect for: {tier.perfectFor}</p>
+              <p className="text-blue-600 text-sm font-semibold mb-4">Perfect for: {tier.perfectFor}</p>
 
-              <div className="mb-6 pb-6 border-b border-slate-700">
-                <div className="text-slate-300">
+              <div className="mb-6 pb-6 border-b border-slate-300">
+                <div className="text-slate-700">
                   <span className="text-sm">Timeline:</span>
-                  <div className="text-lg font-semibold text-white">{tier.timeline}</div>
+                  <div className="text-lg font-semibold text-slate-900">{tier.timeline}</div>
                 </div>
               </div>
 
               <ul className="space-y-3 mb-8">
                 {tier.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-300">
-                    <FaCheck className="text-indigo-400 flex-shrink-0 mt-1" />
+                  <li key={i} className="flex items-start gap-3 text-slate-700">
+                    <FaCheck className="text-blue-600 flex-shrink-0 mt-1" />
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
 
               {tier.note && (
-                <div className="mb-6 p-4 bg-indigo-600/10 border border-indigo-500/30 rounded-xl">
-                  <p className="text-indigo-300 text-sm italic">{tier.note}</p>
+                <div className="mb-6 p-4 bg-indigo-600/10 border border-blue-600/30 rounded-xl">
+                  <p className="text-blue-500 text-sm italic">{tier.note}</p>
                 </div>
               )}
 
@@ -132,8 +132,8 @@ export default function Pricing() {
                 href="#contact"
                 className={`block w-full text-center px-6 py-3 rounded-xl font-semibold transition-all ${
                   tier.popular || tier.premium
-                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-500 hover:to-purple-500'
-                    : 'bg-slate-700 text-white hover:bg-slate-600'
+                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-slate-900 hover:from-blue-600 hover:to-orange-500'
+                    : 'bg-slate-700 text-slate-900 hover:bg-slate-600'
                 }`}
               >
                 {tier.price === 'Get Quote' ? 'Get Quote' : 'Get Started'}
@@ -143,7 +143,7 @@ export default function Pricing() {
         </div>
 
         <motion.p
-          className="text-center text-slate-400 mt-12 text-lg"
+          className="text-center text-slate-600 mt-12 text-lg"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.8 }}

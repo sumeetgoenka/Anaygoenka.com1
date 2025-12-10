@@ -10,7 +10,7 @@ export default function Guarantee() {
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   return (
-    <section className="py-20 bg-slate-900">
+    <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-6" ref={ref}>
         <motion.div
           className="max-w-3xl mx-auto text-center"
@@ -28,19 +28,19 @@ export default function Guarantee() {
           </motion.div>
 
           {/* Title */}
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">
             🔒 <span className="gradient-text">My Promise</span>
           </h2>
 
           {/* Promise */}
-          <p className="text-2xl md:text-3xl text-slate-300 leading-relaxed mb-6">
+          <p className="text-2xl md:text-3xl text-slate-700 leading-relaxed mb-6">
             If you don&apos;t love the first draft,
             <br />
             <span className="text-green-400 font-bold">I&apos;ll redo it until you&apos;re happy</span>
             <br />— no extra cost.
           </p>
 
-          <p className="text-slate-400 text-lg">Zero risk. Pure confidence. That&apos;s the vibe.</p>
+          <p className="text-slate-600 text-lg">Zero risk. Pure confidence. That&apos;s the vibe.</p>
         </motion.div>
       </div>
     </section>
