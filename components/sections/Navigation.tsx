@@ -54,7 +54,7 @@ export default function Navigation() {
             ))}
             <a
               href="#contact"
-              className="px-6 py-2 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all"
+              className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white font-bold hover:from-orange-600 hover:to-orange-700 hover:shadow-lg hover:shadow-orange-500/20 transition-all"
             >
               Get Started
             </a>
@@ -93,7 +93,7 @@ export default function Navigation() {
               ))}
               <a
                 href="#contact"
-                className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all text-center"
+                className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-white font-bold hover:from-orange-600 hover:to-orange-700 transition-all text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Get Started

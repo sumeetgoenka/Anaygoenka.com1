@@ -4,80 +4,94 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
-export default function About() {
+const valueCards = [
+  { emoji: '🚀', title: 'Fast Builds', desc: 'Launch-ready sites in days, not months.' },
+  { emoji: '🤖', title: 'AI-Powered', desc: 'Chatbots and tools that actually save you time.' },
+  { emoji: '💬', title: 'Clear Communication', desc: 'Regular updates, Loom walkthroughs, no disappearing.' },
+  { emoji: '⚡️', title: 'Teen Energy', desc: 'Modern taste and fresh ideas, zero corporate cringe.' },
+];
+
+export default function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section id="about" className="py-20 md:py-32 bg-slate-900 relative overflow-hidden">
+    <section
+      id="about"
+      className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50 py-20 md:py-28"
+    >
       {/* Background decoration */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-600 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600 rounded-full filter blur-3xl"></div>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-10 -left-10 w-80 h-80 bg-blue-200/40 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-200/35 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-purple-100/30 rounded-full blur-[120px]"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
-        >
+      <div className="relative z-10 container mx-auto max-w-6xl px-6" ref={ref}>
+        <div className="flex flex-col gap-12 lg:gap-16">
           {/* Section title */}
-          <div className="text-center mb-16">
-            <motion.h2
-              className="text-4xl md:text-6xl font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 }}
-            >
-              <span className="gradient-text">💥 Who I Am</span>
-            </motion.h2>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100/80 border border-slate-200 rounded-full text-xs font-semibold uppercase tracking-wide text-slate-600">
+              <span className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-orange-500 animate-pulse"></span>
+              About
+            </div>
+            <h2 className="mt-4 text-4xl md:text-5xl font-extrabold leading-tight text-[#1F2A5C]">
+              <span className="gradient-text">Who I Am</span>
+            </h2>
+            <div className="mt-3 h-1 w-16 bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 rounded-full"></div>
+          </motion.div>
 
           {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            <div className="space-y-8 text-lg md:text-xl text-slate-300 leading-relaxed text-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.15, duration: 0.6 }}
+              className="space-y-5 text-slate-700 text-base md:text-lg leading-relaxed"
+            >
               <p>
-                I&apos;m <span className="text-indigo-400 font-bold">Anay</span> — a{' '}
-                <span className="text-purple-400 font-semibold">13-year-old Dubai-based full-stack developer</span>{' '}
-                who builds modern websites, AI tools, and web apps with a mix of curiosity, creativity, and straight
-                up hustle.
+                I&apos;m <span className="font-semibold text-[#1F2A5C]">Anay</span> — a 13-year-old full-stack developer
+                in Dubai. I&apos;ve been building since I was 11 and have shipped 5+ sites and tools for students,
+                creators, schools, and small businesses.
               </p>
 
               <p>
-                I started <span className="gradient-text font-bold">vibecoding</span> at 12, using AI + trial and error
-                to create full products. Now I build for real clients, schools, and anyone who wants something modern,
-                fast, and actually useful.
+                You get someone who moves fast without cutting corners: modern frameworks + AI assistance = launch-ready
+                builds in days. I share Loom updates, timelines, and next steps so you always know what&apos;s shipping
+                and when.
               </p>
 
-              {/* Key highlights */}
-              <div className="grid md:grid-cols-3 gap-12 mt-16">
-                {[
-                  { emoji: '🚀', title: 'Fast Builds', desc: 'No templates, pure custom code' },
-                  { emoji: '🤖', title: 'AI-Powered', desc: 'Smart tools & chatbots' },
-                  { emoji: '💎', title: 'Teen Energy', desc: 'Fresh perspective on design' },
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.6 + index * 0.1 }}
-                  >
-                    <div className="text-5xl mb-4">{item.emoji}</div>
-                    <h3 className="text-white font-bold text-xl mb-2">{item.title}</h3>
-                    <p className="text-slate-400">{item.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
+              <p>
+                I call it <span className="font-semibold text-[#1F2A5C]">vibecoding</span>: lots of experiments and lots
+                of shipping, but always aimed at a site or tool that looks sharp, loads fast, and actually helps your
+                business.
+              </p>
+            </motion.div>
+
+            <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
+              {valueCards.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.25 + index * 0.08, duration: 0.5 }}
+                  className="h-full"
+                >
+                  <div className="h-full rounded-2xl border border-slate-200/80 bg-white/80 backdrop-blur-sm p-5 sm:p-6 shadow-lg shadow-blue-100/50 hover:shadow-blue-200/70 transition-all duration-300 hover:-translate-y-1">
+                    <div className="text-3xl mb-3">{item.emoji}</div>
+                    <h3 className="text-lg font-semibold text-[#1F2A5C] mb-1">{item.title}</h3>
+                    <p className="text-sm md:text-base text-slate-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
