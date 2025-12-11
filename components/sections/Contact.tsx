@@ -87,10 +87,10 @@ export default function Contact() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
             <span className="gradient-text">Let&apos;s Build Together</span>
           </h2>
-          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
             Ready to create something amazing? Drop me a message and let&apos;s make it happen.
           </p>
         </motion.div>
@@ -104,7 +104,7 @@ export default function Contact() {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-slate-700 font-semibold mb-2">
+                <label htmlFor="name" className="block text-slate-900 font-bold mb-2 text-sm uppercase tracking-wide">
                   Name
                 </label>
                 <input
@@ -122,7 +122,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-slate-700 font-semibold mb-2">
+                <label htmlFor="email" className="block text-slate-900 font-bold mb-2 text-sm uppercase tracking-wide">
                   Email
                 </label>
                 <input
@@ -140,7 +140,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="projectType" className="block text-slate-700 font-semibold mb-2">
+                <label htmlFor="projectType" className="block text-slate-900 font-bold mb-2 text-sm uppercase tracking-wide">
                   Project Type
                 </label>
                 <select
@@ -163,7 +163,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="budget" className="block text-slate-700 font-semibold mb-2">
+                <label htmlFor="budget" className="block text-slate-900 font-bold mb-2 text-sm uppercase tracking-wide">
                   Budget Range (Optional)
                 </label>
                 <input
@@ -178,7 +178,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-slate-700 font-semibold mb-2">
+                <label htmlFor="message" className="block text-slate-900 font-bold mb-2 text-sm uppercase tracking-wide">
                   Message
                 </label>
                 <textarea
@@ -253,8 +253,8 @@ export default function Contact() {
 
             {/* Process */}
             <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 backdrop-blur-sm border border-blue-600/50 rounded-3xl p-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">The Process</h3>
-              <div className="space-y-2 text-slate-700">
+              <h3 className="text-2xl font-bold text-slate-950 mb-4 tracking-tight">The Process</h3>
+              <div className="space-y-2 text-slate-700 font-medium">
                 <p className="flex items-center gap-2">
                   <span className="text-blue-600">1.</span> Ask a few questions
                 </p>

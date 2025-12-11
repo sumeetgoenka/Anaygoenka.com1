@@ -25,26 +25,26 @@ export default function Hero() {
 
           {/* Main headline */}
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 glow-text"
+            className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight leading-none"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <span className="gradient-text">Websites so good,</span>
             <br />
-            <span className="text-slate-900">people forget I&apos;m 13.</span>
+            <span className="text-slate-950">people forget I&apos;m 13.</span>
           </motion.h1>
 
           {/* Subheadline */}
           <motion.p
-            className="text-xl md:text-2xl lg:text-3xl text-slate-700 mb-8 max-w-4xl mx-auto"
+            className="text-xl md:text-2xl lg:text-3xl text-slate-600 mb-8 max-w-4xl mx-auto font-medium leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
             Fast. Modern. Aesthetic. AI-Powered.
             <br />
-            <span className="text-blue-600">Full-stack builds with teen energy.</span>
+            <span className="text-blue-600 font-semibold">Full-stack builds with teen energy.</span>
           </motion.p>
 
           {/* AI Chatbot Specialty Badge */}
@@ -96,7 +96,7 @@ export default function Hero() {
                 <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
                   {stat.number}
                 </div>
-                <div className="text-slate-600 text-sm">{stat.label}</div>
+                <div className="text-slate-500 text-sm font-medium uppercase tracking-wide">{stat.label}</div>
               </div>
             ))}
           </motion.div>

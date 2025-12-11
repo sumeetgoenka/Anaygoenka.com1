@@ -74,10 +74,10 @@ export default function Portfolio() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
             <span className="gradient-text">My Work</span>
           </h2>
-          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
             Real projects. Live websites. Built from scratch with modern tech.
           </p>
         </motion.div>
@@ -98,25 +98,25 @@ export default function Portfolio() {
                 </div>
               )}
 
-              <h3 className="text-3xl font-bold text-slate-900 mb-3">{project.title}</h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-slate-950 mb-3 tracking-tight">{project.title}</h3>
 
-              <p className="text-xl text-slate-700 italic mb-6">
+              <p className="text-xl text-slate-600 italic mb-6 font-medium">
                 &ldquo;{project.tagline}&rdquo;
               </p>
 
               {/* Case Study Structure */}
               <div className="text-left max-w-2xl mx-auto mb-6 space-y-4">
                 <div>
-                  <h4 className="text-blue-600 font-semibold mb-1">Problem</h4>
-                  <p className="text-slate-600">{project.problem}</p>
+                  <h4 className="text-blue-600 font-bold mb-2 text-sm uppercase tracking-wider">Problem</h4>
+                  <p className="text-slate-600 leading-relaxed">{project.problem}</p>
                 </div>
                 <div>
-                  <h4 className="text-blue-600 font-semibold mb-1">Solution</h4>
-                  <p className="text-slate-600">{project.solution}</p>
+                  <h4 className="text-blue-600 font-bold mb-2 text-sm uppercase tracking-wider">Solution</h4>
+                  <p className="text-slate-600 leading-relaxed">{project.solution}</p>
                 </div>
                 <div>
-                  <h4 className="text-green-400 font-semibold mb-1">Outcome</h4>
-                  <p className="text-slate-700 font-medium">{project.outcome}</p>
+                  <h4 className="text-orange-600 font-bold mb-2 text-sm uppercase tracking-wider">Outcome</h4>
+                  <p className="text-slate-900 font-semibold leading-relaxed">{project.outcome}</p>
                 </div>
               </div>
 
