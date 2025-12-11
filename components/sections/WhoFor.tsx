@@ -50,9 +50,9 @@ export default function WhoFor() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
-            <span className="gradient-text">🎯 Who I Build For</span>
+            <span className="text-slate-900">🎯 Who I Build For</span>
           </h2>
-          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
+          <p className="text-slate-700 text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
             If you see yourself here, we&apos;re a perfect match.
           </p>
         </motion.div>
@@ -68,8 +68,8 @@ export default function WhoFor() {
             >
               <div className="text-3xl text-blue-600 flex-shrink-0 mt-1">{item.icon}</div>
               <div>
-                <h3 className="text-slate-950 font-bold text-xl mb-2 tracking-tight">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed font-normal">{item.text}</p>
+                <h3 className="text-slate-900 font-bold text-xl mb-2 tracking-tight">{item.title}</h3>
+                <p className="text-slate-700 leading-relaxed font-normal">{item.text}</p>
               </div>
             </motion.div>
           ))}

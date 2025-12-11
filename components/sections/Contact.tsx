@@ -88,9 +88,9 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
-            <span className="gradient-text">Let&apos;s Build Together</span>
+            <span className="text-slate-900">Let&apos;s Build Together</span>
           </h2>
-          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
+          <p className="text-slate-700 text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
             Ready to create something amazing? Drop me a message and let&apos;s make it happen.
           </p>
         </motion.div>
@@ -253,8 +253,8 @@ export default function Contact() {
 
             {/* Process */}
             <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 backdrop-blur-sm border border-blue-600/50 rounded-3xl p-8">
-              <h3 className="text-2xl font-bold text-slate-950 mb-4 tracking-tight">The Process</h3>
-              <div className="space-y-2 text-slate-700 font-medium">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">The Process</h3>
+              <div className="space-y-2 text-slate-800 font-normal">
                 <p className="flex items-center gap-2">
                   <span className="text-blue-600">1.</span> Ask a few questions
                 </p>
