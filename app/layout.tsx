@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lusitana } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const lusitana = Lusitana({
+  weight: ['400', '700'],
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-lusitana",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${lusitana.variable} antialiased`}>
         {children}
       </body>
     </html>

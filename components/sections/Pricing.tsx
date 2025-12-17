@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FaCheck, FaStar } from 'react-icons/fa';
 
 export default function Pricing() {
   const ref = useRef(null);
@@ -11,13 +10,12 @@ export default function Pricing() {
 
   const tiers = [
     {
-      icon: '💫',
       name: 'Starter Website',
       price: '$27',
-      perfectFor: 'Small businesses, school clubs, personal projects',
-      timeline: '1-3 days',
+      perfectFor: 'school clubs, personal projects, small businesses',
+      timeline: '1–3 days',
       features: [
-        '1-3 custom pages',
+        '1–3 custom pages',
         'Clean, modern UI',
         'Contact form',
         'Mobile responsive',
@@ -25,118 +23,103 @@ export default function Pricing() {
       ],
     },
     {
-      icon: '🚀',
       name: 'Professional Website',
       price: '$77',
-      perfectFor: 'Businesses, portfolios, content sites',
-      timeline: '1-2 weeks',
+      perfectFor: 'businesses, portfolios, content sites',
+      timeline: '1–2 weeks',
       popular: true,
       features: [
-        '5-7 custom pages',
+        '5–7 custom pages',
         'Smooth animations',
-        'Blog or updates system',
+        'Blog / updates system',
         'Custom forms & integrations',
-        'SEO optimization',
-        'Full hosting & domain setup',
+        'SEO basics',
+        'Hosting + domain setup',
       ],
     },
     {
-      icon: '💎',
       name: 'Custom Web App',
-      price: 'Get Quote',
-      perfectFor: 'SaaS ideas, complex tools, AI-powered platforms',
-      timeline: '2-4 weeks (depends on complexity)',
-      premium: true,
+      price: 'Get a Quote',
+      perfectFor: 'SaaS, complex tools, custom platforms',
+      timeline: '2–4 weeks (depends on complexity)',
       features: [
-        'Custom dashboards',
+        'Dashboards + admin panels',
         'Database integration',
-        'User login systems',
-        'AI chatbot integration',
-        'Admin panels',
+        'User authentication',
+        'API integrations',
         'Full-stack features',
         'Ongoing support options',
       ],
-      note: 'This is where the real magic happens - SaaS-level power',
+      note: 'This is where you get SaaS-level power.',
     },
   ];
 
   return (
-    <section id="pricing" className="py-20 md:py-32 bg-gray-50 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-indigo-600 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-600 rounded-full filter blur-3xl"></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10" ref={ref}>
+    <section id="pricing" className="py-24 md:py-32 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-6xl relative z-10" ref={ref}>
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="gradient-text">Pricing</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal text-slate-900 mb-4">
+            Pricing
           </h2>
-          <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
-            Transparent pricing. No hidden fees. Just honest work.
+          <div className="w-16 h-1 bg-slate-900 mx-auto mb-6"></div>
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            Transparent pricing. No surprises.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8">
           {tiers.map((tier, index) => (
             <motion.div
               key={index}
-              className="relative text-center"
-              initial={{ opacity: 0, y: 40 }}
+              className="bg-white border border-slate-200 rounded-lg p-8 flex flex-col"
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
             >
               {tier.popular && (
-                <div className="mb-4 inline-block px-4 py-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full text-slate-900 text-xs font-bold flex items-center gap-1">
-                  <FaStar className="text-xs" />
+                <div className="inline-block px-3 py-1 bg-slate-900 text-white text-xs rounded-full mb-4 font-medium self-start">
                   MOST POPULAR
                 </div>
               )}
 
-              <div className="text-5xl mb-4">{tier.icon}</div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">{tier.name}</h3>
+              <h3 className="text-2xl font-normal text-slate-900 mb-3">{tier.name}</h3>
 
-              <div className="text-4xl font-bold gradient-text mb-4">{tier.price}</div>
+              <div className="text-4xl font-normal text-slate-900 mb-4">{tier.price}</div>
 
-              <p className="text-blue-600 text-sm font-semibold mb-4">Perfect for: {tier.perfectFor}</p>
+              <p className="text-slate-600 text-sm mb-4">Best for: {tier.perfectFor}</p>
 
-              <div className="mb-6 pb-6 border-b border-slate-300">
-                <div className="text-slate-700">
+              <div className="mb-6 pb-6 border-b border-slate-200">
+                <div className="text-slate-600">
                   <span className="text-sm">Timeline:</span>
-                  <div className="text-lg font-semibold text-slate-900">{tier.timeline}</div>
+                  <div className="text-lg font-normal text-slate-900">{tier.timeline}</div>
                 </div>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-3 mb-8 flex-grow">
                 {tier.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3 text-slate-700">
-                    <FaCheck className="text-blue-600 flex-shrink-0 mt-1" />
+                  <li key={i} className="flex items-start gap-3 text-slate-600">
+                    <span className="text-slate-900 mt-1">•</span>
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
 
               {tier.note && (
-                <div className="mb-6 p-4 bg-indigo-600/10 border border-blue-600/30 rounded-xl">
-                  <p className="text-blue-500 text-sm italic">{tier.note}</p>
+                <div className="mb-6 p-4 bg-slate-50 border border-slate-200 rounded-lg">
+                  <p className="text-slate-600 text-sm">{tier.note}</p>
                 </div>
               )}
 
               <a
                 href="#contact"
-                className={`block w-full text-center px-6 py-3 rounded-xl font-semibold transition-all ${
-                  tier.popular || tier.premium
-                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-slate-900 hover:from-blue-600 hover:to-orange-500'
-                    : 'bg-slate-700 text-slate-900 hover:bg-slate-600'
-                }`}
+                className="block w-full text-center px-6 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-colors"
               >
-                {tier.price === 'Get Quote' ? 'Get Quote' : 'Get Started'}
+                {tier.price === 'Get a Quote' ? 'Get Quote' : 'Get Started'}
               </a>
             </motion.div>
           ))}
@@ -148,7 +131,7 @@ export default function Pricing() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.8 }}
         >
-          All packages include free revisions until you&apos;re 100% happy 🔥
+          All packages include revisions until you&apos;re 100% happy.
         </motion.p>
       </div>
     </section>

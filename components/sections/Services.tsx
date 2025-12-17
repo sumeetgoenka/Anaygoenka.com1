@@ -3,16 +3,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import {
-  FaRocket,
-  FaGraduationCap,
-  FaRobot,
-  FaCode,
-  FaNewspaper,
-  FaChartLine,
-  FaCog,
-  FaServer,
-} from 'react-icons/fa';
 
 export default function Services() {
   const ref = useRef(null);
@@ -20,92 +10,65 @@ export default function Services() {
 
   const services = [
     {
-      icon: <FaRocket />,
-      title: 'Landing Pages & Business Sites',
-      description: 'Modern, conversion-focused websites that make your business shine',
+      title: 'Landing Pages',
+      description: 'Conversion-focused pages that make your business look premium.',
     },
     {
-      icon: <FaGraduationCap />,
-      title: 'School Dashboards & Student Tools',
-      description: 'Educational platforms with smart features for students and teachers',
-    },
-    {
-      icon: <FaRobot />,
-      title: 'AI Chatbots & Conversational Interfaces',
-      description: 'Intelligent chatbots that actually help users - my specialty! ⭐',
+      title: 'Web Applications',
+      description: 'Full-stack apps built with modern frameworks and clean UX.',
       featured: true,
     },
     {
-      icon: <FaCode />,
-      title: 'Custom Web Applications',
-      description: 'Full-stack apps built from scratch with modern tech',
+      title: 'Admin Dashboards',
+      description: 'Internal tools for managing data, users, and workflows.',
     },
     {
-      icon: <FaNewspaper />,
-      title: 'Blog & News Platforms',
-      description: 'Content management systems that are easy to use and beautiful',
-    },
-    {
-      icon: <FaChartLine />,
-      title: 'Admin Panels & Analytics Dashboards',
-      description: 'Data visualization and management tools that make sense',
-    },
-    {
-      icon: <FaCog />,
-      title: 'Productivity & Automation Tools',
-      description: 'Apps that save time and make workflows smoother',
-    },
-    {
-      icon: <FaServer />,
-      title: 'Hosting & Domain Setup',
-      description: 'Complete deployment and configuration on modern platforms',
+      title: 'Custom Integrations',
+      description: 'APIs, automations, and tools that connect your services.',
     },
   ];
 
   return (
-    <section id="services" className="py-20 md:py-32 bg-slate-950 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-indigo-600/20 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-600/20 rounded-full filter blur-3xl"></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10" ref={ref}>
+    <section id="services" className="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-6xl relative z-10" ref={ref}>
         {/* Section header */}
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="gradient-text">What I Build</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal text-slate-900 mb-4">
+            What I Build
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
-            From simple landing pages to complex AI-powered applications — I build it all.
+          <div className="w-16 h-1 bg-slate-900 mx-auto mb-6"></div>
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+            Modern solutions for{' '}
+            <span className="relative inline-block">
+              <span className="relative z-10 font-semibold text-slate-900">real businesses</span>
+              <span className="absolute bottom-0 left-0 w-full h-2 bg-yellow-200 -z-0"></span>
+            </span>
+            .
           </p>
         </motion.div>
 
         {/* Services grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="text-center"
-              initial={{ opacity: 0, y: 30 }}
+              className="bg-white border border-slate-200 rounded-lg p-8 hover:shadow-lg transition-shadow"
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              <div
-                className={`text-5xl mb-4 ${
-                  service.featured ? 'text-indigo-400' : 'text-purple-400'
-                }`}
-              >
-                {service.icon}
-              </div>
-              <h3 className="text-white font-bold text-lg mb-3">{service.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{service.description}</p>
-              {service.featured && <div className="mt-2 text-indigo-400 text-xs font-semibold">⭐ SPECIALTY</div>}
+              {service.featured && (
+                <div className="inline-block px-3 py-1 bg-slate-900 text-white text-xs rounded-full mb-4 font-medium">
+                  SPECIALTY
+                </div>
+              )}
+              <h3 className="text-2xl font-normal text-slate-900 mb-3">{service.title}</h3>
+              <p className="text-slate-600 text-lg leading-relaxed">{service.description}</p>
             </motion.div>
           ))}
         </div>
