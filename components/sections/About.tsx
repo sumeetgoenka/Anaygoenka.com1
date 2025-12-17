@@ -10,7 +10,6 @@ export default function AboutSection() {
 
   return (
     <section
-      id="about"
       className="relative overflow-hidden bg-white py-24 md:py-32"
     >
       <div className="relative z-10 container mx-auto max-w-6xl px-6" ref={ref}>

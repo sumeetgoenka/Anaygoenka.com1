@@ -4,41 +4,9 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex flex-col bg-white overflow-hidden">
-      {/* Simple Navigation */}
-      <nav className="relative z-50 w-full px-6 md:px-12 py-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo */}
-          <div className="w-8"></div>
-
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center gap-10 text-sm">
-            <a href="#about" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
-              About
-            </a>
-            <a href="#portfolio" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
-              Work
-            </a>
-            <a href="#services" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
-              Services
-            </a>
-            <a href="#contact" className="text-slate-600 hover:text-slate-900 transition-colors font-medium">
-              Contact
-            </a>
-          </div>
-
-          {/* CTA Button */}
-          <a
-            href="#contact"
-            className="px-7 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-all hover:shadow-lg"
-          >
-            Get in Touch
-          </a>
-        </div>
-      </nav>
-
+    <section id="home" className="relative min-h-screen flex flex-col bg-white overflow-hidden pt-20">
       {/* Hero Content */}
-      <div className="relative flex-1 flex items-center justify-center px-6 md:px-16 pb-24 pt-16">
+      <div className="relative flex-1 flex items-center justify-center px-6 md:px-16 pb-24 pt-8">
         <div className="max-w-7xl mx-auto w-full">
           {/* Massive Headline */}
           <motion.h1
@@ -59,6 +27,15 @@ export default function Hero() {
             </span>.
           </motion.h1>
 
+          {/* Background Shapes - Separate from animation */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Background Shape - Left */}
+            <div className="absolute -left-40 top-1/2 -translate-y-1/2 w-[600px] h-[450px] bg-[#a8b5a0] rounded-[4rem] opacity-70 -z-10"></div>
+
+            {/* Background Shape - Right */}
+            <div className="absolute -right-40 top-1/2 -translate-y-1/2 w-[600px] h-[450px] bg-[#a8b5a0] rounded-[4rem] opacity-70 -z-10"></div>
+          </div>
+
           {/* Browser/Mockup Container */}
           <motion.div
             className="relative max-w-6xl mx-auto"
@@ -66,12 +43,6 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            {/* Background Shape - Left */}
-            <div className="absolute -left-40 top-1/2 -translate-y-1/2 w-[600px] h-[450px] bg-[#a8b5a0] rounded-[4rem] opacity-50 -z-10 blur-sm"></div>
-
-            {/* Background Shape - Right */}
-            <div className="absolute -right-40 top-1/2 -translate-y-1/2 w-[600px] h-[450px] bg-[#a8b5a0] rounded-[4rem] opacity-50 -z-10 blur-sm"></div>
-
             {/* Browser Mockup */}
             <div className="relative bg-white rounded-xl overflow-hidden shadow-2xl border border-slate-200">
               {/* Browser Chrome */}
