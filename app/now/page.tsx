@@ -10,19 +10,19 @@ export default function NowPage() {
   const sections = [
     {
       title: 'Current Project',
-      content: 'Working on something new — details coming soon.',
+      content: 'Building a proper, hand-coded Python game.',
     },
     {
       title: 'What I\'m Learning',
-      content: 'Exploring new frameworks and technologies.',
+      content: 'Learning Python.',
     },
     {
       title: 'Next Goal',
-      content: 'Setting new targets — stay tuned.',
+      content: 'Learn HTML.',
     },
     {
       title: 'Recent Wins',
-      content: 'Shipped some cool stuff recently.',
+      content: 'Topped my class in the end-of-term exams!',
     },
   ];
 
