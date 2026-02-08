@@ -3,6 +3,8 @@ import { getFirestore } from 'firebase-admin/firestore';
 
 const SERVICE_ACCOUNT_ENV = 'FIREBASE_SERVICE_ACCOUNT';
 
+type ServiceAccountJson = ServiceAccount & { private_key?: string };
+
 function parseServiceAccount(): ServiceAccount {
   const raw = process.env[SERVICE_ACCOUNT_ENV];
   if (!raw) {
@@ -10,12 +12,15 @@ function parseServiceAccount(): ServiceAccount {
   }
   let parsed: ServiceAccount;
   try {
-    parsed = JSON.parse(raw) as ServiceAccount;
+    parsed = JSON.parse(raw) as ServiceAccountJson;
   } catch (error) {
     throw new Error(`${SERVICE_ACCOUNT_ENV} is not valid JSON`);
   }
-  if (typeof parsed.private_key === 'string') {
-    parsed.private_key = parsed.private_key.replace(/\\n/g, '\n');
+  if (typeof (parsed as ServiceAccountJson).private_key === 'string') {
+    (parsed as ServiceAccountJson).private_key = (parsed as ServiceAccountJson).private_key.replace(
+      /\\n/g,
+      '\n'
+    );
   }
   return parsed;
 }
