@@ -18,6 +18,7 @@ export default function AdminPage() {
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState('');
+  const [globalError, setGlobalError] = useState('');
 
   // Form state
   const [title, setTitle] = useState('');
@@ -37,14 +38,35 @@ export default function AdminPage() {
 
   const fetchPosts = useCallback(async () => {
     setLoading(true);
+    setGlobalError('');
     try {
       const res = await fetch('/api/blog');
       if (res.ok) {
         const data = await res.json();
         setPosts(data);
+      } else {
+        let data: { error?: string; details?: string } = {};
+        let rawText = '';
+        try {
+          rawText = await res.text();
+          data = rawText ? JSON.parse(rawText) : {};
+        } catch (parseError) {
+          console.error('Failed to parse posts error response:', parseError);
+        }
+        console.error('Failed to fetch posts', {
+          status: res.status,
+          statusText: res.statusText,
+          body: rawText,
+        });
+        setGlobalError(
+          data.details ? `${data.error || 'Failed to fetch posts'} — ${data.details}` : data.error || 'Failed to fetch posts'
+        );
       }
     } catch (error) {
       console.error('Failed to fetch posts:', error);
+      setGlobalError(
+        error instanceof Error ? `Failed to fetch posts — ${error.message}` : 'Failed to fetch posts'
+      );
     }
     setLoading(false);
   }, []);
@@ -117,8 +139,24 @@ export default function AdminPage() {
       }
 
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        setError(data.error || 'Something went wrong. Please try again.');
+        let data: { error?: string; details?: string } = {};
+        let rawText = '';
+        try {
+          rawText = await res.text();
+          data = rawText ? JSON.parse(rawText) : {};
+        } catch (parseError) {
+          console.error('Failed to parse error response:', parseError);
+        }
+        console.error('Blog save failed', {
+          status: res.status,
+          statusText: res.statusText,
+          body: rawText,
+        });
+        setError(
+          data.details
+            ? `${data.error || 'Something went wrong. Please try again.'} — ${data.details}`
+            : data.error || 'Something went wrong. Please try again.'
+        );
         return;
       }
 
@@ -189,6 +227,11 @@ export default function AdminPage() {
             New Post
           </button>
         </div>
+        {globalError && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+            {globalError}
+          </div>
+        )}
 
         {/* Create/Edit Form */}
         {showForm && (

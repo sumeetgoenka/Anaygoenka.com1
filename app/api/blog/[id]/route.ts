@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { updatePost, deletePost } from '@/lib/blog';
+import { assertFirebaseAdminConfig } from '@/lib/firebase-admin';
 
 const ADMIN_PASSWORD = 'MONKEY';
 
@@ -9,6 +10,7 @@ interface Props {
 
 export async function PUT(request: NextRequest, { params }: Props) {
   try {
+    assertFirebaseAdminConfig();
     const { id } = await params;
     const body = await request.json();
     const { password, ...updateData } = body;
@@ -21,12 +23,22 @@ export async function PUT(request: NextRequest, { params }: Props) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Failed to update blog post:', error);
-    return NextResponse.json({ error: 'Failed to update post' }, { status: 500 });
+    const details = error instanceof Error ? error.message : 'Unknown error';
+    const stack = error instanceof Error ? error.stack : undefined;
+    return NextResponse.json(
+      {
+        error: 'Failed to update post',
+        details,
+        stack: process.env.NODE_ENV === 'development' ? stack : undefined,
+      },
+      { status: 500 }
+    );
   }
 }
 
 export async function DELETE(request: NextRequest, { params }: Props) {
   try {
+    assertFirebaseAdminConfig();
     const { id } = await params;
     const body = await request.json();
 
@@ -38,6 +50,17 @@ export async function DELETE(request: NextRequest, { params }: Props) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Failed to delete blog post:', error);
-    return NextResponse.json({ error: 'Failed to delete post' }, { status: 500 });
+    const details = error instanceof Error ? error.message : 'Unknown error';
+    const stack = error instanceof Error ? error.stack : undefined;
+    return NextResponse.json(
+      {
+        error: 'Failed to delete post',
+        details,
+        stack: process.env.NODE_ENV === 'development' ? stack : undefined,
+      },
+      { status: 500 }
+    );
   }
 }
+
+export const runtime = 'nodejs';
