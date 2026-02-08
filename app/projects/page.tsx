@@ -37,6 +37,9 @@ export default function ProjectsPage() {
             />
           ))}
         </div>
+        <div className="text-center mt-16">
+          <p className="text-slate-500 text-base">More coming soon.</p>
+        </div>
       </div>
     </section>
   );

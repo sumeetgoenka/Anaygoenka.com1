@@ -29,6 +29,21 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'anaythetutor',
+    title: 'AnayTheTutor',
+    description: 'YouTube channel where I teach stuff and break down topics clearly.',
+    why: 'Teaching helps me learn better, and I want to make tough topics feel simple.',
+    features: [
+      'Clear, step-by-step explanations',
+      'Short lessons and walkthroughs',
+      'Focused on practical understanding',
+      'New videos as I learn more',
+    ],
+    learned: 'Explaining concepts out loud forces clarity. I learned how to structure lessons so ideas stick.',
+    tech: 'YouTube · Teaching',
+    liveUrl: 'https://www.youtube.com/@AnayTheTutor',
+  },
+  {
     slug: 'latymernews',
     title: 'LatymerNews',
     description: 'Modern school newsroom with instant publishing — 50+ articles, built fast.',
