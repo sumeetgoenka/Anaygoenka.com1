@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import type { BlogPost } from '@/lib/blog';
+import type { HelloMessage } from '@/lib/hello';
 
 function slugify(text: string): string {
   return text
@@ -15,10 +16,14 @@ export default function AdminPage() {
   const [isAuthed, setIsAuthed] = useState(false);
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState<'blog' | 'hello'>('blog');
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [error, setError] = useState('');
   const [globalError, setGlobalError] = useState('');
+  const [helloMessages, setHelloMessages] = useState<HelloMessage[]>([]);
+  const [loadingHello, setLoadingHello] = useState(false);
+  const [helloError, setHelloError] = useState('');
 
   // Form state
   const [title, setTitle] = useState('');
@@ -71,9 +76,51 @@ export default function AdminPage() {
     setLoading(false);
   }, []);
 
+  const fetchHelloMessages = useCallback(async () => {
+    setLoadingHello(true);
+    setHelloError('');
+    try {
+      const res = await fetch('/api/hello', {
+        headers: { 'x-admin-password': password },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setHelloMessages(data);
+      } else {
+        let data: { error?: string; details?: string } = {};
+        let rawText = '';
+        try {
+          rawText = await res.text();
+          data = rawText ? JSON.parse(rawText) : {};
+        } catch (parseError) {
+          console.error('Failed to parse hello error response:', parseError);
+        }
+        console.error('Failed to fetch hello messages', {
+          status: res.status,
+          statusText: res.statusText,
+          body: rawText,
+        });
+        setHelloError(
+          data.details ? `${data.error || 'Failed to fetch messages'} — ${data.details}` : data.error || 'Failed to fetch messages'
+        );
+      }
+    } catch (error) {
+      console.error('Failed to fetch hello messages:', error);
+      setHelloError(
+        error instanceof Error ? `Failed to fetch messages — ${error.message}` : 'Failed to fetch messages'
+      );
+    }
+    setLoadingHello(false);
+  }, [password]);
+
   useEffect(() => {
-    if (isAuthed) fetchPosts();
-  }, [isAuthed, fetchPosts]);
+    if (!isAuthed) return;
+    if (activeTab === 'blog') {
+      fetchPosts();
+    } else {
+      fetchHelloMessages();
+    }
+  }, [isAuthed, activeTab, fetchPosts, fetchHelloMessages]);
 
   function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -108,6 +155,15 @@ export default function AdminPage() {
   function startCreate() {
     resetForm();
     setShowForm(true);
+  }
+
+  function switchTab(tab: 'blog' | 'hello') {
+    setActiveTab(tab);
+    if (tab === 'hello') {
+      setShowForm(false);
+      setEditingPost(null);
+      setError('');
+    }
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -215,17 +271,46 @@ export default function AdminPage() {
   return (
     <section className="py-24 md:py-32 bg-white min-h-screen">
       <div className="container mx-auto px-6 max-w-4xl">
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
           <div>
             <h1 className="text-4xl font-normal text-slate-900 mb-2">Blog Admin</h1>
             <div className="w-16 h-1 bg-slate-900"></div>
           </div>
-          <button
-            onClick={startCreate}
-            className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-all hover:shadow-lg"
-          >
-            New Post
-          </button>
+          <div className="flex items-center gap-4">
+            <div className="relative inline-flex rounded-full bg-slate-100 p-1">
+              <span
+                className={`absolute left-1 top-1 h-[calc(100%-0.5rem)] w-24 rounded-full bg-white shadow transition-transform ${
+                  activeTab === 'blog' ? 'translate-x-0' : 'translate-x-24'
+                }`}
+              ></span>
+              <button
+                type="button"
+                onClick={() => switchTab('blog')}
+                className={`relative z-10 w-24 px-3 py-2 text-sm font-medium rounded-full transition-colors ${
+                  activeTab === 'blog' ? 'text-slate-900' : 'text-slate-500'
+                }`}
+              >
+                Blog
+              </button>
+              <button
+                type="button"
+                onClick={() => switchTab('hello')}
+                className={`relative z-10 w-24 px-3 py-2 text-sm font-medium rounded-full transition-colors ${
+                  activeTab === 'hello' ? 'text-slate-900' : 'text-slate-500'
+                }`}
+              >
+                Hello
+              </button>
+            </div>
+            {activeTab === 'blog' && (
+              <button
+                onClick={startCreate}
+                className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-all hover:shadow-lg"
+              >
+                New Post
+              </button>
+            )}
+          </div>
         </div>
         {globalError && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
@@ -234,7 +319,7 @@ export default function AdminPage() {
         )}
 
         {/* Create/Edit Form */}
-        {showForm && (
+        {activeTab === 'blog' && showForm && (
           <div className="bg-white border border-slate-200 rounded-lg p-8 mb-8">
             <h2 className="text-2xl font-normal text-slate-900 mb-6">
               {editingPost ? 'Edit Post' : 'New Post'}
@@ -320,50 +405,102 @@ export default function AdminPage() {
           </div>
         )}
 
-        {/* Posts List */}
-        {loading ? (
-          <div className="text-center py-12">
-            <p className="text-slate-500">Loading posts...</p>
-          </div>
-        ) : posts.length === 0 ? (
-          <div className="bg-white border border-slate-200 rounded-lg p-12 text-center">
-            <p className="text-slate-600 text-lg">No posts yet. Create your first one!</p>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {posts.map((post) => (
-              <div
-                key={post.id}
-                className="bg-white border border-slate-200 rounded-lg p-6 flex items-center justify-between"
-              >
-                <div>
-                  <h3 className="text-lg font-normal text-slate-900">{post.title}</h3>
-                  <p className="text-sm text-slate-500">
-                    {new Date(post.date).toLocaleDateString('en-GB', {
-                      day: 'numeric',
-                      month: 'short',
-                      year: 'numeric',
-                    })}
-                    {post.tags.length > 0 && ` · ${post.tags.join(', ')}`}
-                  </p>
-                </div>
-                <div className="flex gap-2 shrink-0 ml-4">
-                  <button
-                    onClick={() => startEdit(post)}
-                    className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 rounded-lg text-sm font-medium transition-all"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(post)}
-                    className="px-4 py-2 bg-white hover:bg-red-50 text-red-600 border border-slate-200 rounded-lg text-sm font-medium transition-all"
-                  >
-                    Delete
-                  </button>
-                </div>
+        {activeTab === 'blog' ? (
+          <>
+            {/* Posts List */}
+            {loading ? (
+              <div className="text-center py-12">
+                <p className="text-slate-500">Loading posts...</p>
               </div>
-            ))}
-          </div>
+            ) : posts.length === 0 ? (
+              <div className="bg-white border border-slate-200 rounded-lg p-12 text-center">
+                <p className="text-slate-600 text-lg">No posts yet. Create your first one!</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {posts.map((post) => (
+                  <div
+                    key={post.id}
+                    className="bg-white border border-slate-200 rounded-lg p-6 flex items-center justify-between"
+                  >
+                    <div>
+                      <h3 className="text-lg font-normal text-slate-900">{post.title}</h3>
+                      <p className="text-sm text-slate-500">
+                        {new Date(post.date).toLocaleDateString('en-GB', {
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric',
+                        })}
+                        {post.tags.length > 0 && ` · ${post.tags.join(', ')}`}
+                      </p>
+                    </div>
+                    <div className="flex gap-2 shrink-0 ml-4">
+                      <button
+                        onClick={() => startEdit(post)}
+                        className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 rounded-lg text-sm font-medium transition-all"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(post)}
+                        className="px-4 py-2 bg-white hover:bg-red-50 text-red-600 border border-slate-200 rounded-lg text-sm font-medium transition-all"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          <>
+            {helloError && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                {helloError}
+              </div>
+            )}
+            {loadingHello ? (
+              <div className="text-center py-12">
+                <p className="text-slate-500">Loading messages...</p>
+              </div>
+            ) : helloMessages.length === 0 ? (
+              <div className="bg-white border border-slate-200 rounded-lg p-12 text-center">
+                <p className="text-slate-600 text-lg">No hello messages yet.</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {helloMessages.map((message) => (
+                  <div
+                    key={message.id}
+                    className="bg-white border border-slate-200 rounded-lg p-6"
+                  >
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
+                      <div>
+                        <h3 className="text-lg font-normal text-slate-900">{message.name}</h3>
+                        <a
+                          href={`mailto:${message.email}`}
+                          className="text-sm text-slate-500 hover:text-slate-900 transition-colors"
+                        >
+                          {message.email}
+                        </a>
+                      </div>
+                      <div className="text-sm text-slate-500">
+                        {new Date(message.createdAt).toLocaleDateString('en-GB', {
+                          day: 'numeric',
+                          month: 'short',
+                          year: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}
+                      </div>
+                    </div>
+                    <p className="text-slate-600 mt-4 whitespace-pre-line">{message.message}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
     </section>

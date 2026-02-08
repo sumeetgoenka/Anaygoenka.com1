@@ -8,6 +8,13 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showHello, setShowHello] = useState(false);
+  const [helloName, setHelloName] = useState('');
+  const [helloEmail, setHelloEmail] = useState('');
+  const [helloMessage, setHelloMessage] = useState('');
+  const [helloError, setHelloError] = useState('');
+  const [helloStatus, setHelloStatus] = useState<'idle' | 'success'>('idle');
+  const [isSendingHello, setIsSendingHello] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -24,6 +31,69 @@ export default function Navbar() {
     { name: 'Now', href: '/now' },
     { name: 'About', href: '/about' },
   ];
+
+  function openHello() {
+    setShowHello(true);
+  }
+
+  function closeHello() {
+    setShowHello(false);
+    setHelloError('');
+    setHelloStatus('idle');
+  }
+
+  async function handleHelloSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setHelloError('');
+    setHelloStatus('idle');
+    setIsSendingHello(true);
+
+    try {
+      const res = await fetch('/api/hello', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: helloName.trim(),
+          email: helloEmail.trim(),
+          message: helloMessage.trim(),
+        }),
+      });
+
+      if (!res.ok) {
+        let data: { error?: string; details?: string } = {};
+        let rawText = '';
+        try {
+          rawText = await res.text();
+          data = rawText ? JSON.parse(rawText) : {};
+        } catch (parseError) {
+          console.error('Failed to parse hello error response:', parseError);
+        }
+        console.error('Hello submit failed', {
+          status: res.status,
+          statusText: res.statusText,
+          body: rawText,
+        });
+        setHelloError(
+          data.details
+            ? `${data.error || 'Something went wrong.'} — ${data.details}`
+            : data.error || 'Something went wrong.'
+        );
+        return;
+      }
+
+      setHelloStatus('success');
+      setHelloName('');
+      setHelloEmail('');
+      setHelloMessage('');
+    } catch (error) {
+      console.error('Failed to send hello message:', error);
+      setHelloError(
+        error instanceof Error ? `Network error — ${error.message}` : 'Network error. Please try again.'
+      );
+    } finally {
+      setIsSendingHello(false);
+    }
+  }
 
   return (
     <motion.nav
@@ -63,12 +133,13 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <a
-              href="mailto:anaygoenka12@gmail.com"
+            <button
+              type="button"
+              onClick={openHello}
               className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-all hover:shadow-lg"
             >
               Say Hello
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -121,14 +192,110 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <a
-                href="mailto:anaygoenka12@gmail.com"
+              <button
+                type="button"
                 className="block w-full px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-center font-medium transition-all"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  openHello();
+                }}
               >
                 Say Hello
-              </a>
+              </button>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showHello && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="w-full max-w-lg bg-white rounded-2xl border border-slate-200 shadow-2xl p-8 relative"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <button
+                type="button"
+                onClick={closeHello}
+                className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 transition-colors"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+              <h2 className="text-2xl font-normal text-slate-900 mb-2">Say Hello</h2>
+              <p className="text-slate-600 mb-6">Send me a message and I&apos;ll get back to you.</p>
+
+              {helloError && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                  {helloError}
+                </div>
+              )}
+              {helloStatus === 'success' && (
+                <div className="mb-4 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-700 text-sm">
+                  Message sent. Thanks for reaching out!
+                </div>
+              )}
+
+              <form onSubmit={handleHelloSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-slate-900 font-medium mb-2">Name</label>
+                  <input
+                    type="text"
+                    value={helloName}
+                    onChange={(e) => setHelloName(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:border-slate-900 transition-colors"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-900 font-medium mb-2">Email</label>
+                  <input
+                    type="email"
+                    value={helloEmail}
+                    onChange={(e) => setHelloEmail(e.target.value)}
+                    required
+                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:border-slate-900 transition-colors"
+                    placeholder="you@example.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-slate-900 font-medium mb-2">Message</label>
+                  <textarea
+                    value={helloMessage}
+                    onChange={(e) => setHelloMessage(e.target.value)}
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:border-slate-900 transition-colors resize-none"
+                    placeholder="Say hi..."
+                  />
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    type="submit"
+                    disabled={isSendingHello}
+                    className="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-all hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {isSendingHello ? 'Sending...' : 'Send Message'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={closeHello}
+                    className="px-6 py-3 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 rounded-lg text-sm font-medium transition-all"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
