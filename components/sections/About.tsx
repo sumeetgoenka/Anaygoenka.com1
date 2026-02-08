@@ -25,9 +25,9 @@ export default function AboutSection() {
           </h2>
           <div className="w-16 h-1 bg-slate-900 mx-auto mb-6"></div>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            Student by day,{' '}
+            Student first,{' '}
             <span className="relative inline-block">
-              <span className="relative z-10 font-semibold text-slate-900">developer by night</span>
+              <span className="relative z-10 font-semibold text-slate-900">builder second</span>
               <span className="absolute bottom-0 left-0 w-full h-2 bg-yellow-200 -z-0"></span>
             </span>
             .
@@ -44,20 +44,23 @@ export default function AboutSection() {
             className="space-y-6 text-slate-600 text-lg leading-relaxed"
           >
             <p>
-              Hey, I'm Anay — a student based in Dubai with a serious love for building things on the internet.
-              I taught myself to code and haven't stopped since.
+              Hey, I'm Anay, a student in Dubai. Right now my main focus is academics, getting really strong at the
+              basics and pushing my grades up.
             </p>
 
             <p>
-              When I'm not in school, I'm building full-stack web apps, experimenting with new frameworks, and shipping projects that people actually use. I've built platforms for students, newsrooms for schools, and tools that solve real problems.
+              Outside school, I'm into tech and I love experimenting, especially with Python. I'm still early in my
+              coding journey, but I enjoy learning by building small projects and figuring things out as I go.
             </p>
 
             <p>
               <span className="relative inline-block">
-                <span className="relative z-10 font-semibold text-slate-900">Curious, self-driven, and always learning</span>
+                <span className="relative z-10 font-semibold text-slate-900">
+                  Curious, self-driven, and always improving
+                </span>
                 <span className="absolute bottom-0 left-0 w-full h-2 bg-yellow-200 -z-0"></span>
               </span>
-              — that's the short version. The long version is in my projects below.
+              . That's me.
             </p>
           </motion.div>
 
@@ -69,23 +72,23 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <div className="border-l-2 border-slate-900 pl-6">
-              <h3 className="text-2xl font-normal text-slate-900 mb-2">Self-Taught</h3>
-              <p className="text-slate-600">Learned to code from scratch — curiosity is my best teacher.</p>
+              <h3 className="text-2xl font-normal text-slate-900 mb-2">Academics First</h3>
+              <p className="text-slate-600">Focused on school and improving every term.</p>
             </div>
 
             <div className="border-l-2 border-slate-900 pl-6">
-              <h3 className="text-2xl font-normal text-slate-900 mb-2">Always Building</h3>
-              <p className="text-slate-600">I ship real projects, not just tutorials.</p>
+              <h3 className="text-2xl font-normal text-slate-900 mb-2">Learning Python</h3>
+              <p className="text-slate-600">Basics now, building confidence step-by-step.</p>
             </div>
 
             <div className="border-l-2 border-slate-900 pl-6">
-              <h3 className="text-2xl font-normal text-slate-900 mb-2">Full-Stack</h3>
-              <p className="text-slate-600">Frontend to backend — I build the whole thing.</p>
+              <h3 className="text-2xl font-normal text-slate-900 mb-2">Curious Mindset</h3>
+              <p className="text-slate-600">I love learning how things work.</p>
             </div>
 
             <div className="border-l-2 border-slate-900 pl-6">
-              <h3 className="text-2xl font-normal text-slate-900 mb-2">Student Life</h3>
-              <p className="text-slate-600">Balancing school and code — and loving every bit of it.</p>
+              <h3 className="text-2xl font-normal text-slate-900 mb-2">Balanced Life</h3>
+              <p className="text-slate-600">I love chess, cricket, piano and guitar and eating Indian food!</p>
             </div>
           </motion.div>
         </div>
