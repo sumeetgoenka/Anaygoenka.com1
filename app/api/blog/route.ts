@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllPosts, createPost } from '@/lib/devlog';
+import { getAllPosts, createPost } from '@/lib/blog';
 
 const ADMIN_PASSWORD = 'MONKEY';
 
@@ -8,7 +8,7 @@ export async function GET() {
     const posts = await getAllPosts();
     return NextResponse.json(posts);
   } catch (error) {
-    console.error('Failed to fetch devlog posts:', error);
+    console.error('Failed to fetch blog posts:', error);
     return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 });
   }
 }
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     const id = await createPost(postData);
     return NextResponse.json({ id }, { status: 201 });
   } catch (error) {
-    console.error('Failed to create devlog post:', error);
+    console.error('Failed to create blog post:', error);
     return NextResponse.json({ error: 'Failed to create post' }, { status: 500 });
   }
 }

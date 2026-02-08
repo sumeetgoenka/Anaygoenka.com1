@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import type { DevlogPost } from '@/lib/devlog';
+import type { BlogPost } from '@/lib/blog';
 
 function slugify(text: string): string {
   return text
@@ -13,10 +13,11 @@ function slugify(text: string): string {
 export default function AdminPage() {
   const [password, setPassword] = useState('');
   const [isAuthed, setIsAuthed] = useState(false);
-  const [posts, setPosts] = useState<DevlogPost[]>([]);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(false);
-  const [editingPost, setEditingPost] = useState<DevlogPost | null>(null);
+  const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const [error, setError] = useState('');
 
   // Form state
   const [title, setTitle] = useState('');
@@ -37,7 +38,7 @@ export default function AdminPage() {
   const fetchPosts = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/devlog');
+      const res = await fetch('/api/blog');
       if (res.ok) {
         const data = await res.json();
         setPosts(data);
@@ -68,9 +69,10 @@ export default function AdminPage() {
     setDate(new Date().toISOString().split('T')[0]);
     setEditingPost(null);
     setShowForm(false);
+    setError('');
   }
 
-  function startEdit(post: DevlogPost) {
+  function startEdit(post: BlogPost) {
     setEditingPost(post);
     setTitle(post.title);
     setSlug(post.slug);
@@ -78,6 +80,7 @@ export default function AdminPage() {
     setTags(post.tags.join(', '));
     setDate(post.date);
     setShowForm(true);
+    setError('');
   }
 
   function startCreate() {
@@ -87,6 +90,7 @@ export default function AdminPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setError('');
     const postData = {
       title,
       slug: slug || slugify(title),
@@ -97,30 +101,39 @@ export default function AdminPage() {
     };
 
     try {
+      let res: Response;
       if (editingPost) {
-        await fetch(`/api/devlog/${editingPost.id}`, {
+        res = await fetch(`/api/blog/${editingPost.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(postData),
         });
       } else {
-        await fetch('/api/devlog', {
+        res = await fetch('/api/blog', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(postData),
         });
       }
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || 'Something went wrong. Please try again.');
+        return;
+      }
+
       resetForm();
       fetchPosts();
     } catch (error) {
       console.error('Failed to save post:', error);
+      setError('Network error. Please check your connection and try again.');
     }
   }
 
-  async function handleDelete(post: DevlogPost) {
+  async function handleDelete(post: BlogPost) {
     if (!confirm(`Delete "${post.title}"?`)) return;
     try {
-      await fetch(`/api/devlog/${post.id}`, {
+      await fetch(`/api/blog/${post.id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
@@ -166,7 +179,7 @@ export default function AdminPage() {
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="flex items-center justify-between mb-12">
           <div>
-            <h1 className="text-4xl font-normal text-slate-900 mb-2">Devlog Admin</h1>
+            <h1 className="text-4xl font-normal text-slate-900 mb-2">Blog Admin</h1>
             <div className="w-16 h-1 bg-slate-900"></div>
           </div>
           <button
@@ -183,6 +196,11 @@ export default function AdminPage() {
             <h2 className="text-2xl font-normal text-slate-900 mb-6">
               {editingPost ? 'Edit Post' : 'New Post'}
             </h2>
+            {error && (
+              <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                {error}
+              </div>
+            )}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-slate-900 font-medium mb-2">Title</label>

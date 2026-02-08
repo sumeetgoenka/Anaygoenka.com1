@@ -3,13 +3,13 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
-import type { DevlogPost } from '@/lib/devlog';
+import type { BlogPost } from '@/lib/blog';
 
-interface LatestDevlogProps {
-  posts: DevlogPost[];
+interface LatestBlogProps {
+  posts: BlogPost[];
 }
 
-export default function LatestDevlog({ posts }: LatestDevlogProps) {
+export default function LatestBlog({ posts }: LatestBlogProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -25,7 +25,7 @@ export default function LatestDevlog({ posts }: LatestDevlogProps) {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal text-slate-900 mb-4">
-            Devlog
+            Blog
           </h2>
           <div className="w-16 h-1 bg-slate-900 mx-auto mb-6"></div>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
@@ -42,7 +42,7 @@ export default function LatestDevlog({ posts }: LatestDevlogProps) {
               transition={{ delay: index * 0.1, duration: 0.6 }}
             >
               <Link
-                href={`/devlog/${post.slug}`}
+                href={`/blog/${post.slug}`}
                 className="group block bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition-all"
               >
                 <div className="flex items-center justify-between">
@@ -81,7 +81,7 @@ export default function LatestDevlog({ posts }: LatestDevlogProps) {
           transition={{ delay: 0.5, duration: 0.6 }}
         >
           <Link
-            href="/devlog"
+            href="/blog"
             className="text-slate-600 hover:text-slate-900 text-sm font-medium transition-colors"
           >
             View all posts &rarr;

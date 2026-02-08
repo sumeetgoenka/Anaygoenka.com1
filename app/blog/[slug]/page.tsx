@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getPostBySlug } from '@/lib/devlog';
-import DevlogPostView from '@/components/sections/DevlogPostView';
+import { getPostBySlug } from '@/lib/blog';
+import BlogPostView from '@/components/sections/BlogPostView';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -15,15 +15,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const post = await getPostBySlug(slug);
     if (!post) return { title: 'Post Not Found' };
     return {
-      title: `${post.title} — Devlog — Anay Goenka`,
+      title: `${post.title} — Blog — Anay Goenka`,
       description: post.content.slice(0, 160),
     };
   } catch {
-    return { title: 'Devlog — Anay Goenka' };
+    return { title: 'Blog — Anay Goenka' };
   }
 }
 
-export default async function DevlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
 
   let post;
@@ -35,5 +35,5 @@ export default async function DevlogPostPage({ params }: Props) {
 
   if (!post) notFound();
 
-  return <DevlogPostView post={post} />;
+  return <BlogPostView post={post} />;
 }

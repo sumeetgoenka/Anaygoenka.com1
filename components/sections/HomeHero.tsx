@@ -28,12 +28,12 @@ export default function HomeHero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            I build{' '}
+            I do and make{' '}
             <span className="relative inline-block">
-              <span className="relative z-10 font-semibold text-slate-900">games + study tools + random tech experiments</span>
+              <span className="relative z-10 font-semibold text-slate-900">cool stuff</span>
               <span className="absolute bottom-0 left-0 w-full h-2 bg-yellow-200 -z-0"></span>
             </span>
-            .
+            !
           </motion.p>
 
           <motion.div

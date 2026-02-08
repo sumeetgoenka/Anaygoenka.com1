@@ -3,13 +3,13 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
-import type { DevlogPost } from '@/lib/devlog';
+import type { BlogPost } from '@/lib/blog';
 
-interface DevlogPostViewProps {
-  post: DevlogPost;
+interface BlogPostViewProps {
+  post: BlogPost;
 }
 
-export default function DevlogPostView({ post }: DevlogPostViewProps) {
+export default function BlogPostView({ post }: BlogPostViewProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -22,10 +22,10 @@ export default function DevlogPostView({ post }: DevlogPostViewProps) {
           transition={{ duration: 0.6 }}
         >
           <Link
-            href="/devlog"
+            href="/blog"
             className="text-slate-500 hover:text-slate-900 text-sm font-medium transition-colors mb-8 inline-block"
           >
-            &larr; Back to Devlog
+            &larr; Back to Blog
           </Link>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal text-slate-900 mb-4">
