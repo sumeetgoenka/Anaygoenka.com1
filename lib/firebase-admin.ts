@@ -16,11 +16,10 @@ function parseServiceAccount(): ServiceAccount {
   } catch (error) {
     throw new Error(`${SERVICE_ACCOUNT_ENV} is not valid JSON`);
   }
-  if (typeof (parsed as ServiceAccountJson).private_key === 'string') {
-    (parsed as ServiceAccountJson).private_key = (parsed as ServiceAccountJson).private_key.replace(
-      /\\n/g,
-      '\n'
-    );
+  const serviceAccount = parsed as ServiceAccountJson;
+  const privateKey = serviceAccount.private_key;
+  if (typeof privateKey === 'string') {
+    serviceAccount.private_key = privateKey.replace(/\\n/g, '\n');
   }
   return parsed;
 }
