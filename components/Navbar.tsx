@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +19,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Work', href: '#portfolio' },
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Pricing', href: '#pricing' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Devlog', href: '/devlog' },
+    { name: 'Now', href: '/now' },
+    { name: 'About', href: '/about' },
   ];
 
   return (
@@ -37,35 +39,35 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a
-            href="#home"
+          <Link
+            href="/"
             className={`text-xl font-bold transition-colors ${
               isScrolled ? 'text-slate-900' : 'text-slate-900'
             }`}
           >
             Anay Goenka
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
-                  isScrolled
-                    ? 'text-slate-600 hover:text-slate-900'
+                  pathname === link.href || pathname.startsWith(link.href + '/')
+                    ? 'text-slate-900'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <a
-              href="#contact"
+              href="mailto:anaygoenka12@gmail.com"
               className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-all hover:shadow-lg"
             >
-              Get in Touch
+              Say Hello
             </a>
           </div>
 
@@ -106,21 +108,25 @@ export default function Navbar() {
           >
             <div className="px-6 py-6 space-y-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
-                  className="block text-slate-600 hover:text-slate-900 font-medium transition-colors"
+                  className={`block font-medium transition-colors ${
+                    pathname === link.href || pathname.startsWith(link.href + '/')
+                      ? 'text-slate-900'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               <a
-                href="#contact"
+                href="mailto:anaygoenka12@gmail.com"
                 className="block w-full px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-center font-medium transition-all"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get in Touch
+                Say Hello
               </a>
             </div>
           </motion.div>

@@ -36,7 +36,7 @@ export default function TechStack() {
           </h2>
           <div className="w-16 h-1 bg-slate-900 mx-auto mb-6"></div>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            Modern tools. Real developer energy.
+            Tools I work with.
           </p>
         </motion.div>
 

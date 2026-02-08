@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Lusitana } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/sections/Footer";
 
 const lusitana = Lusitana({
   weight: ['400', '700'],
@@ -9,13 +11,13 @@ const lusitana = Lusitana({
 });
 
 export const metadata: Metadata = {
-  title: "Anay - 13-Year-Old Full-Stack Developer | Dubai",
-  description: "Professional web development services by Anay, a 13-year-old Dubai-based developer specializing in modern websites, AI chatbots, and full-stack applications. Fast delivery, affordable pricing.",
-  keywords: ["web developer Dubai", "teen developer", "AI chatbot developer", "Next.js developer", "full-stack developer"],
-  authors: [{ name: "Anay" }],
+  title: "Anay Goenka — Student & Developer",
+  description: "Hi, I'm Anay — a student and full-stack developer based in Dubai. I build web apps, tools, and platforms with modern tech.",
+  keywords: ["Anay Goenka", "student developer", "full-stack developer", "Next.js", "portfolio"],
+  authors: [{ name: "Anay Goenka" }],
   openGraph: {
-    title: "Anay - 13-Year-Old Full-Stack Developer",
-    description: "Websites so good, people forget I'm 13. Modern, fast, AI-powered web development.",
+    title: "Anay Goenka — Student & Developer",
+    description: "Hi, I'm Anay — a student and full-stack developer based in Dubai. I build web apps, tools, and platforms with modern tech.",
     type: "website",
   },
 };
@@ -28,7 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lusitana.variable} antialiased`}>
-        {children}
+        <Navbar />
+        <main className="pt-20">{children}</main>
+        <Footer />
       </body>
     </html>
   );

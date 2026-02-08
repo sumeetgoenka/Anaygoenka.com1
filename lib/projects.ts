@@ -1,0 +1,81 @@
+export interface Project {
+  slug: string;
+  title: string;
+  description: string;
+  why: string;
+  features: string[];
+  learned: string;
+  tech: string;
+  liveUrl?: string;
+  githubUrl?: string;
+  featured?: boolean;
+}
+
+export const projects: Project[] = [
+  {
+    slug: 'happystudy',
+    title: 'HappyStudy',
+    description: 'Ed-tech platform with gamification, homework tracking, and 500+ student sign-ups.',
+    why: 'I wanted to make studying less boring and more rewarding for students.',
+    features: [
+      'Gamified learning with XP and streaks',
+      'Homework tracking and reminders',
+      'Student dashboard with progress stats',
+      '500+ sign-ups',
+    ],
+    learned: 'This was my first full-stack SaaS. I learned how to structure a database, handle user auth, and ship a product that real people use.',
+    tech: 'Full-stack SaaS',
+    liveUrl: 'https://happystudy.co.uk',
+    featured: true,
+  },
+  {
+    slug: 'latymernews',
+    title: 'LatymerNews',
+    description: 'Modern school newsroom with instant publishing — 50+ articles, built fast.',
+    why: 'My school needed a better way to share news and student writing.',
+    features: [
+      'Instant article publishing',
+      'Clean, modern reading experience',
+      '50+ articles published',
+      'Fast page loads with static generation',
+    ],
+    learned: 'I got comfortable with Next.js static generation and learned how to build a CMS-like system from scratch.',
+    tech: 'Next.js · Vercel',
+    liveUrl: 'https://latymernews.vercel.app',
+    featured: true,
+  },
+  {
+    slug: 'scoremarks',
+    title: 'ScoreMarks',
+    description: 'High-conversion landing page with 40% form completion.',
+    why: 'I wanted to see how well I could optimise a landing page for conversions.',
+    features: [
+      '40% form completion rate',
+      'Custom multi-step form',
+      'Clean, conversion-focused design',
+      'Mobile-optimised layout',
+    ],
+    learned: 'I learned a lot about conversion optimisation — how layout, copy, and form design all affect whether someone actually fills things in.',
+    tech: 'Next.js · Custom forms',
+    liveUrl: 'https://scoremarks.vercel.app',
+    featured: true,
+  },
+  {
+    slug: 'custom-tools',
+    title: 'Custom Tools',
+    description: 'Internal dashboards and automation tools for businesses.',
+    why: 'Built various tools to solve specific problems — from data dashboards to workflow automations.',
+    features: [
+      'Admin dashboards for managing data',
+      'API integrations and automations',
+      'Custom reporting tools',
+      'Business workflow automation',
+    ],
+    learned: 'Every tool had different requirements, which taught me to adapt quickly and build exactly what\'s needed without over-engineering.',
+    tech: 'Full-stack · APIs',
+  },
+];
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((p) => p.slug === slug);
+}

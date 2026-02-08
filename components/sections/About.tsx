@@ -21,13 +21,13 @@ export default function AboutSection() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal text-slate-900 mb-4">
-            Who I Am
+            About Me
           </h2>
           <div className="w-16 h-1 bg-slate-900 mx-auto mb-6"></div>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            A developer who ships{' '}
+            Student by day,{' '}
             <span className="relative inline-block">
-              <span className="relative z-10 font-semibold text-slate-900">fast and clean</span>
+              <span className="relative z-10 font-semibold text-slate-900">developer by night</span>
               <span className="absolute bottom-0 left-0 w-full h-2 bg-yellow-200 -z-0"></span>
             </span>
             .
@@ -44,20 +44,20 @@ export default function AboutSection() {
             className="space-y-6 text-slate-600 text-lg leading-relaxed"
           >
             <p>
-              Hi, I'm Anay — a full-stack developer based in Dubai.
-              I've shipped websites and tools for students, creators, schools, and small businesses.
+              Hey, I'm Anay — a student based in Dubai with a serious love for building things on the internet.
+              I taught myself to code and haven't stopped since.
             </p>
 
             <p>
-              You get someone who moves fast without cutting corners: modern frameworks + smart workflows = launch-ready builds in days. I share clear timelines and regular updates, so you always know what's shipping and when.
+              When I'm not in school, I'm building full-stack web apps, experimenting with new frameworks, and shipping projects that people actually use. I've built platforms for students, newsrooms for schools, and tools that solve real problems.
             </p>
 
             <p>
               <span className="relative inline-block">
-                <span className="relative z-10 font-semibold text-slate-900">Rapid experimentation, clean execution</span>
+                <span className="relative z-10 font-semibold text-slate-900">Curious, self-driven, and always learning</span>
                 <span className="absolute bottom-0 left-0 w-full h-2 bg-yellow-200 -z-0"></span>
               </span>
-              , and shipping features that look sharp, load fast, and genuinely help your users.
+              — that's the short version. The long version is in my projects below.
             </p>
           </motion.div>
 
@@ -69,23 +69,23 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <div className="border-l-2 border-slate-900 pl-6">
-              <h3 className="text-2xl font-normal text-slate-900 mb-2">Fast Delivery</h3>
-              <p className="text-slate-600">Launch-ready sites in days, not months.</p>
+              <h3 className="text-2xl font-normal text-slate-900 mb-2">Self-Taught</h3>
+              <p className="text-slate-600">Learned to code from scratch — curiosity is my best teacher.</p>
             </div>
 
             <div className="border-l-2 border-slate-900 pl-6">
-              <h3 className="text-2xl font-normal text-slate-900 mb-2">Modern Features</h3>
-              <p className="text-slate-600">Smart tools and integrations that save real time.</p>
+              <h3 className="text-2xl font-normal text-slate-900 mb-2">Always Building</h3>
+              <p className="text-slate-600">I ship real projects, not just tutorials.</p>
             </div>
 
             <div className="border-l-2 border-slate-900 pl-6">
-              <h3 className="text-2xl font-normal text-slate-900 mb-2">Clear Communication</h3>
-              <p className="text-slate-600">Frequent updates, Loom walkthroughs, zero disappearing.</p>
+              <h3 className="text-2xl font-normal text-slate-900 mb-2">Full-Stack</h3>
+              <p className="text-slate-600">Frontend to backend — I build the whole thing.</p>
             </div>
 
             <div className="border-l-2 border-slate-900 pl-6">
-              <h3 className="text-2xl font-normal text-slate-900 mb-2">Fresh, Modern Taste</h3>
-              <p className="text-slate-600">Clean design, strong UX, no "corporate cringe".</p>
+              <h3 className="text-2xl font-normal text-slate-900 mb-2">Student Life</h3>
+              <p className="text-slate-600">Balancing school and code — and loving every bit of it.</p>
             </div>
           </motion.div>
         </div>

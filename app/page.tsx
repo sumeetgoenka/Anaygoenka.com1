@@ -1,37 +1,26 @@
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/sections/Hero';
-import About from '@/components/sections/About';
-import Services from '@/components/sections/Services';
-import Portfolio from '@/components/sections/Portfolio';
-import WhoFor from '@/components/sections/WhoFor';
-import WhyChoose from '@/components/sections/WhyChoose';
-import Process from '@/components/sections/Process';
-import Pricing from '@/components/sections/Pricing';
-import Testimonials from '@/components/sections/Testimonials';
-import Guarantee from '@/components/sections/Guarantee';
-import TechStack from '@/components/sections/TechStack';
-import Contact from '@/components/sections/Contact';
-import Footer from '@/components/sections/Footer';
+import { projects } from '@/lib/projects';
+import { getRecentPosts } from '@/lib/devlog';
+import FeaturedProjects from '@/components/sections/FeaturedProjects';
+import LatestDevlog from '@/components/sections/LatestDevlog';
+import HomeHero from '@/components/sections/HomeHero';
+import NowSnippet from '@/components/sections/NowSnippet';
 
-export default function Home() {
+export default async function Home() {
+  let recentPosts: Awaited<ReturnType<typeof getRecentPosts>> = [];
+  try {
+    recentPosts = await getRecentPosts(3);
+  } catch {
+    // Firebase not configured yet — show page without devlog
+  }
+
+  const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
+
   return (
     <>
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <Portfolio />
-        <WhoFor />
-        <WhyChoose />
-        <Process />
-        <Pricing />
-        <Testimonials />
-        <Guarantee />
-        <TechStack />
-        <Contact />
-      </main>
-      <Footer />
+      <HomeHero />
+      <FeaturedProjects projects={featuredProjects} />
+      <LatestDevlog posts={recentPosts} />
+      <NowSnippet />
     </>
   );
 }
