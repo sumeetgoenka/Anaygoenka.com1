@@ -9,10 +9,10 @@ export default function Footer() {
           <div>
             <p className="text-[color:var(--mute)] text-xs uppercase tracking-[0.2em] mb-6">Say hello</p>
             <Link
-              href="mailto:anay@anaygoenka.com"
+              href="mailto:anay.goenka@yallo.co"
               className="font-display display-md ink-grad link-sweep inline-block"
             >
-              anay@anaygoenka.com
+              anay.goenka@yallo.co
             </Link>
           </div>
 

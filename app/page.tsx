@@ -11,11 +11,6 @@ export default function Home() {
       {/* HERO */}
       <section className="relative min-h-[92vh] px-5 md:px-10 pt-28 md:pt-40 pb-20">
         <div className="mx-auto max-w-[1400px] relative">
-          <div className="flex items-center gap-3 mb-8 text-xs uppercase tracking-[0.2em] text-[color:var(--mute)]">
-            <span className="inline-block w-2 h-2 rounded-full bg-[color:var(--accent)] pulse-dot" />
-            <span>Dubai · 13 y/o · building things on purpose</span>
-          </div>
-
           <h1 className="font-display display-xl">
             Anay
             <br />
@@ -45,19 +40,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Floating sticker */}
-          <div className="hidden md:block absolute top-20 right-0 w-36 h-36 slow-spin pointer-events-none">
-            <svg viewBox="0 0 200 200" className="w-full h-full text-[color:var(--accent)]">
-              <defs>
-                <path id="cp" d="M 100,100 m -70,0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0" />
-              </defs>
-              <text className="font-mono" fontSize="16" fill="currentColor" letterSpacing="4">
-                <textPath href="#cp">
-                  BUILT IN DUBAI · SHIPPED WORLDWIDE · BUILT IN DUBAI ·
-                </textPath>
-              </text>
-            </svg>
-          </div>
         </div>
       </section>
 
