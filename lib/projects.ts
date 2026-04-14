@@ -53,9 +53,9 @@ export const projects: Project[] = [
     year: '2025',
     accent: '#8B5CF6',
     why:
-      'Calendar apps live in tabs I never open. I wanted a tiny widget that just sits there and tells me what I should be doing right now — and what is coming next.',
+      "Calendar apps live in tabs I never open. I wanted something that just sits there and tells me what I should be doing right now — and what's coming next.",
     features: [
-      'Floating always-on-top widget with schedule + countdown to next block',
+      'Floating always-on-top widget with schedule and countdown to next block',
       'Todo mode with priorities, descriptions, and quick-add',
       'Personalised greetings and tone throughout the day',
       'Optional 20-20-20 eye-break reminders',
@@ -63,7 +63,7 @@ export const projects: Project[] = [
       'Sparkle auto-updates — never re-download',
     ],
     learned:
-      'Menu-bar apps are a different beast from windowed apps — always-on-top windows, click-through regions, and wall-clock scheduling in a sleeping laptop. First app I shipped with Sparkle auto-updates.',
+      'Menu-bar apps are a different beast from windowed apps — always-on-top windows, click-through regions, and wall-clock scheduling on a sleeping laptop. First app I shipped with Sparkle auto-updates.',
     tech: ['Swift', 'AppKit', 'macOS', 'Sparkle'],
     liveUrl: 'https://nudge-daily.vercel.app',
     featured: true,
@@ -71,42 +71,65 @@ export const projects: Project[] = [
   {
     slug: 'happystudy',
     title: 'HappyStudy',
-    tagline: 'A gamified study platform for students.',
+    tagline: 'A revision platform built for one school.',
     description:
-      'An ed-tech SaaS with XP, streaks, homework tracking, and a student dashboard. 500+ sign-ups. Built at 12, still my first real product.',
+      'A Latymer School-specific Q&A and community platform. Not generic GCSE revision — built around the syllabuses, teachers, and students of one school. Infrastructure is live. Content sprint is summer 2026.',
     category: 'Web',
-    year: '2024',
+    year: '2024–',
     accent: '#22C55E',
     why:
-      'Studying felt like a grind. I wanted to make it feel like levelling up in a game — and see if real students would actually use it.',
+      "Generic revision tools don't know what your school actually teaches. I wanted something that did.",
     features: [
-      'Gamified learning with XP, streaks, and levels',
-      'Homework tracker with due-date reminders',
+      "Subject Q&A structured around Latymer's specific curriculum",
+      'LatymerHub — a Reddit-style student community',
+      'Groq-powered AI moderation with a strike system',
+      'Homework tracking and due-date reminders',
       'Student dashboard with progress stats',
-      'Teacher tools for assigning work',
-      'Over 500 student sign-ups',
     ],
     learned:
-      'This was the project that taught me to ship. Auth, databases, payments, moderation — every piece of a real SaaS, figured out in public by a 12-year-old.',
-    tech: ['Next.js', 'Firebase', 'Stripe'],
+      'How to scope deliberately. The temptation is to build for everyone. The discipline is to build for one school and make it actually good. Also: auth, databases, and moderation — every ugly piece of a real SaaS.',
+    tech: ['Next.js', 'Supabase', 'Groq'],
     liveUrl: 'https://happystudy.co.uk',
+    featured: true,
+  },
+  {
+    slug: 'yallo-ats',
+    title: 'Yallo ATS',
+    tagline: 'AI-powered recruitment infrastructure for a real firm.',
+    description:
+      "A full recruitment ATS and CRM built for Yallo Group, my father's IT staffing firm. The headline feature is Reverse Match — AI that proactively surfaces candidates for roles rather than waiting for a search.",
+    category: 'Web',
+    year: '2025–',
+    accent: '#06B6D4',
+    why:
+      'The team was doing everything manually. I mapped the workflow, designed the data model, and built the system that replaces it.',
+    features: [
+      'Reverse Match — pgvector embeddings match candidates to open roles automatically',
+      'Unified contacts architecture — candidates and clients in one table, not two',
+      'Full ATS pipeline: sourcing, screening, placement, invoicing',
+      'GDPR-compliant data model with organisation-level multi-tenancy',
+      'Built on Next.js, TypeScript, PostgreSQL, Vercel',
+    ],
+    learned:
+      'Designing for real operational constraints is harder than building for yourself. Thirty-one tables, a 26-page spec, and a colleague (Rohit) to keep in sync — proper software, not a side project.',
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'pgvector'],
     featured: true,
   },
   {
     slug: 'anaythetutor',
     title: 'AnayTheTutor',
-    tagline: 'A YouTube channel where I teach stuff.',
+    tagline: 'A YouTube channel where I teach AI, maths, and CS.',
     description:
-      'Short, clear lessons where I break down topics the way I wish they had been explained to me. Teaching forces clarity.',
+      'Short, clear lessons about artificial intelligence, competition maths, and computer science — explained the way I had to figure them out. Teaching forces clarity.',
     category: 'Teaching',
     year: '2024–',
     accent: '#EF4444',
     why:
       'Explaining something out loud is the fastest way to find the holes in your understanding. So I started recording.',
     features: [
-      'Step-by-step breakdowns of maths and CS topics',
+      'Focused breakdowns of AI concepts, maths techniques, and CS fundamentals',
       'Short-form lessons under five minutes',
-      'Focused on practical intuition, not textbook recital',
+      'Built around practical intuition, not textbook recital',
     ],
     learned:
       'Video is a brutal editor. If the explanation is shaky, it shows. I learned to plan tighter, cut harder, and lead with the punchline.',

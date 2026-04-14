@@ -44,7 +44,7 @@ export default function Home() {
       </section>
 
       {/* MARQUEE */}
-      <Marquee items={['macOS apps', 'web platforms', 'teaching', 'side quests', 'maths', 'swift', 'next.js']} accent />
+      <Marquee items={['macOS apps', 'web platforms', 'AI', 'competition maths', 'swift', 'next.js', 'teaching']} accent />
 
       {/* SELECTED WORK */}
       <section className="px-5 md:px-10 py-24 md:py-32">
@@ -91,7 +91,7 @@ export default function Home() {
               I&apos;m <span className="text-[color:var(--accent)]">thirteen</span>. I started
               coding for fun, then for real, then because I couldn&apos;t stop. I ship things
               when they solve a problem I actually have — which is why the blocker I use most is
-              one I had to build myself, and the HUD on my menu bar started as a sketch at 2am.
+              one I had to build myself, and the HUD on my menu bar started as a sketch at midnight.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link

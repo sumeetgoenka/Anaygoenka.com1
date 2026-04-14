@@ -31,7 +31,7 @@ export default function AboutPage() {
             </div>
             <div>
               <p className="uppercase tracking-[0.2em] text-xs text-[color:var(--mute)] mb-2">Shipped with</p>
-              <p className="text-[color:var(--ink-soft)]">Next.js, SwiftUI, Firebase, Vercel</p>
+              <p className="text-[color:var(--ink-soft)]">Next.js, SwiftUI, Supabase, Vercel</p>
             </div>
           </aside>
 
@@ -42,10 +42,10 @@ export default function AboutPage() {
             </p>
 
             <p>
-              The first thing I ever shipped was{' '}
+              The first thing I shipped was{' '}
               <Link href="/work/happystudy" className="text-[color:var(--ink)] link-sweep">HappyStudy</Link> —
-              an ed-tech platform I built at 12 that somehow picked up 500+ students. I had no idea what
-              I was doing for most of it. That turned out to be the whole point.
+              a revision platform I built at 12 for students at my old school in London. I had no idea
+              what I was doing for most of it. That turned out to be the whole point.
             </p>
 
             <p>
@@ -56,6 +56,8 @@ export default function AboutPage() {
               distraction blocker is one I had to build myself because every other one was too easy to
               disable (
               <Link href="/work/focusdragon" className="text-[color:var(--accent)] link-sweep">FocusDragon</Link>).
+              When my father&apos;s recruitment firm needed an ATS, I designed the data model and{' '}
+              <Link href="/work/yallo-ats" className="text-[color:var(--accent)] link-sweep">built it</Link>.
             </p>
 
             <blockquote className="relative border-l-2 border-[color:var(--accent)] pl-6 py-2 font-display text-2xl md:text-3xl text-[color:var(--ink)] leading-tight">
@@ -63,7 +65,7 @@ export default function AboutPage() {
             </blockquote>
 
             <p>
-              I teach too. My YouTube channel{' '}
+              I teach too.{' '}
               <a href="https://www.youtube.com/@AnayTheTutor" target="_blank" rel="noreferrer" className="text-[color:var(--ink)] link-sweep">
                 AnayTheTutor
               </a>{' '}
@@ -72,14 +74,15 @@ export default function AboutPage() {
             </p>
 
             <p>
-              Outside of code: maths competitions, long walks, and a loud opinion about menu bar ergonomics.
+              Outside of code: cricket, music production, and competition maths.
+              Mostly in that order depending on the week.
             </p>
 
             <div className="pt-8 border-t border-[color:var(--line)]">
               <p className="text-sm uppercase tracking-[0.2em] text-[color:var(--mute)] mb-4">Right now</p>
               <ul className="space-y-2 text-base text-[color:var(--ink-soft)]">
                 <li>— Shipping FocusDragon updates.</li>
-                <li>— Teaching myself Metal and shaders.</li>
+                <li>— Prepping for AMC 10.</li>
                 <li>— Recording more for AnayTheTutor.</li>
               </ul>
             </div>

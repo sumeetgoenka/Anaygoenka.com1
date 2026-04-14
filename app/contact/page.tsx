@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const channels = [
   { label: 'Email', value: 'anay.goenka@yallo.co', href: 'mailto:anay.goenka@yallo.co' },
-  { label: 'GitHub', value: '@anay-goenka', href: 'https://github.com/anay-goenka' },
+  { label: 'GitHub', value: '@anaygoenka', href: 'https://github.com/anaygoenka' },
   { label: 'YouTube', value: '@AnayTheTutor', href: 'https://www.youtube.com/@AnayTheTutor' },
 ];
 
