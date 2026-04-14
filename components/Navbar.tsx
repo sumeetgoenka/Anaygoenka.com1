@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const links = [
+  { name: 'Home', href: '/' },
   { name: 'Work', href: '/work' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
@@ -37,7 +38,6 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-[1400px] px-5 md:px-10 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="inline-block w-2.5 h-2.5 rounded-full bg-[color:var(--accent)] pulse-dot" />
           <span className="font-display text-lg tracking-tight">Anay Goenka</span>
         </Link>
 
