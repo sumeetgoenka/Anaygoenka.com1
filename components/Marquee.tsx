@@ -1,118 +1,42 @@
-'use client';
-
-import Link from 'next/link';
-import { useRef, useState } from 'react';
-
-export interface MarqueeItem {
-  label: string;
-  href?: string;
-}
-
 interface MarqueeProps {
-  items: (string | MarqueeItem)[];
+  items: string[];
   accent?: boolean;
 }
 
 export default function Marquee({ items, accent = false }: MarqueeProps) {
-  const normalised: MarqueeItem[] = items.map((i) =>
-    typeof i === 'string' ? { label: i } : i
+  const Sequence = ({ ariaHidden = false }: { ariaHidden?: boolean }) => (
+    <ul
+      aria-hidden={ariaHidden || undefined}
+      className="flex shrink-0 items-center gap-12 md:gap-16 pr-12 md:pr-16"
+    >
+      {items.map((item, i) => (
+        <li key={i} className="flex items-center gap-12 md:gap-16 shrink-0">
+          <span
+            className={`font-display text-4xl md:text-6xl tracking-tight ${
+              accent ? 'text-[color:var(--accent)]' : 'text-[color:var(--ink)]'
+            }`}
+          >
+            {item}
+          </span>
+          <span className="text-[color:var(--mute)] text-2xl md:text-3xl shrink-0">✦</span>
+        </li>
+      ))}
+    </ul>
   );
-  const doubled = [...normalised, ...normalised, ...normalised, ...normalised];
-
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
-  const [reversed, setReversed] = useState(false);
-
-  // Drag-to-scrub
-  const drag = useRef<{ active: boolean; startX: number; startScroll: number }>({
-    active: false,
-    startX: 0,
-    startScroll: 0,
-  });
-
-  function onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
-    if (!trackRef.current) return;
-    drag.current = {
-      active: true,
-      startX: e.clientX,
-      startScroll: trackRef.current.scrollLeft,
-    };
-    setPaused(true);
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-  }
-
-  function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
-    if (!drag.current.active || !trackRef.current) return;
-    const delta = e.clientX - drag.current.startX;
-    trackRef.current.scrollLeft = drag.current.startScroll - delta;
-  }
-
-  function onPointerUp(e: React.PointerEvent<HTMLDivElement>) {
-    drag.current.active = false;
-    setPaused(false);
-    try {
-      (e.target as HTMLElement).releasePointerCapture(e.pointerId);
-    } catch {}
-  }
 
   return (
-    <div
-      className="relative overflow-hidden py-6 border-y border-[color:var(--line)] cursor-grab active:cursor-grabbing select-none group"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerUp}
-      onClick={() => setReversed((v) => !v)}
-      title="hover to pause · click to reverse · drag to scrub"
+    <section
+      className="relative overflow-hidden border-y border-[color:var(--line)] py-6 md:py-8 bg-[color:var(--bg-2)]"
+      aria-label="Things I work on"
     >
-      <div
-        ref={trackRef}
-        className="flex gap-10 marquee-track whitespace-nowrap overflow-hidden"
-        style={{
-          animationPlayState: paused ? 'paused' : 'running',
-          animationDirection: reversed ? 'reverse' : 'normal',
-        }}
-      >
-        {doubled.map((item, i) => {
-          const baseColor = accent ? 'text-[color:var(--accent)]' : 'text-[color:var(--ink)]';
-          const inner = (
-            <span
-              className={`font-display text-3xl md:text-5xl inline-flex items-center gap-10 transition-all duration-300 ${baseColor}`}
-            >
-              <span
-                className={`inline-block transition-transform duration-300 ${
-                  item.href ? 'hover:scale-110 hover:-rotate-2' : ''
-                }`}
-                style={item.href ? { transformOrigin: 'center' } : undefined}
-              >
-                {item.label}
-              </span>
-              <span className="text-[color:var(--mute)]">✦</span>
-            </span>
-          );
-
-          if (item.href) {
-            return (
-              <Link
-                key={i}
-                href={item.href}
-                draggable={false}
-                onClick={(e) => e.stopPropagation()}
-                className="hover:text-[color:var(--ink)] transition-colors"
-              >
-                {inner}
-              </Link>
-            );
-          }
-          return <span key={i}>{inner}</span>;
-        })}
+      <div className="flex w-max marquee-track">
+        <Sequence />
+        <Sequence ariaHidden />
       </div>
 
-      <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 text-[10px] font-mono uppercase tracking-[0.2em] text-[color:var(--mute)] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-        hover · drag · click
-      </div>
-    </div>
+      {/* Edge fades */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[color:var(--bg-2)] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[color:var(--bg-2)] to-transparent" />
+    </section>
   );
 }
