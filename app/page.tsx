@@ -44,7 +44,18 @@ export default function Home() {
       </section>
 
       {/* MARQUEE */}
-      <Marquee items={['macOS apps', 'web platforms', 'AI', 'competition maths', 'swift', 'next.js', 'teaching']} accent />
+      <Marquee
+        accent
+        items={[
+          { label: 'macOS apps', href: '/work/focusdragon' },
+          { label: 'web platforms', href: '/work/yallo-ats' },
+          { label: 'AI', href: '/work/yallo-ats' },
+          { label: 'competition maths', href: '/about' },
+          { label: 'swift', href: '/work/nudge' },
+          { label: 'next.js', href: '/work' },
+          { label: 'teaching', href: '/work/anaythetutor' },
+        ]}
+      />
 
       {/* SELECTED WORK */}
       <section className="px-5 md:px-10 py-24 md:py-32">
