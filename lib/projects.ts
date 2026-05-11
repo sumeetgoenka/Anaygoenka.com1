@@ -116,6 +116,30 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'yallo-certs',
+    title: 'YALLO Certs',
+    tagline: 'AI certification prep for individual professionals.',
+    description:
+      "A B2C online product for professionals preparing for the AI certification economy — starting with independent Claude Certified Architect preparation. Self-paced lessons, a six-domain readiness assessment, and a 4-week live cohort with mentors. Sister to YALLO Academy (in-person tutoring at academy.yallo.ai).",
+    category: 'Web',
+    year: '2026',
+    accent: '#D4A843',
+    why:
+      "Vendor AI certifications are emerging fast; enterprise architects need somewhere serious to prepare. Most options are either generic Udemy courses or vendor-locked academies. YALLO Certs is the architecture-led, deployment-ready middle ground — an independent preparation product that doesn't pretend to be the official exam.",
+    features: [
+      'Six-domain YALLO Readiness Score — Foundations, Prompt & Context, API & Tool Use, Evaluation, Governance, Architecture',
+      'Eight-pathway skill tree with a seven-layer lesson template (Why this matters / Learn / YALLO Lens / Check / Apply / Exam Readiness / Deployability)',
+      'Founding Cohort: 1 mentor + ~30 globally distributed professionals, four weeks on Zoom, capstone-graded',
+      'Independent preparation programme — no vendor endorsement claims, no exam dumps, original questions only',
+      'In-house admin dashboard (no HubSpot) on Supabase — leads, pipeline, orders, cohorts, email + webhook logs',
+    ],
+    learned:
+      'How to split a brand cleanly: YALLO Certs (online, B2C, global) and YALLO Academy (in-person, B2B + premium B2C, city-by-city) share one curriculum but live on separate subdomains, with separate funnels, separate Supabase projects, and separate launch plans. Also: how to write execution plans that multiple agents can pick up in parallel — every phase has a Shared Contract, every sub-phase declares the files it owns and the files it must not touch.',
+    tech: ['Next.js', 'TypeScript', 'Tailwind', 'Supabase', 'Sanity', 'Stripe', 'Resend', 'Vercel'],
+    liveUrl: 'https://yallocerts-web-sumeetgoenkas-projects.vercel.app',
+    featured: true,
+  },
+  {
     slug: 'anaythetutor',
     title: 'AnayTheTutor',
     tagline: 'A YouTube channel where I teach AI, maths, and CS.',
