@@ -136,7 +136,7 @@ export const projects: Project[] = [
     learned:
       'How to split a brand cleanly: YALLO Certs (online, B2C, global) and YALLO Academy (in-person, B2B + premium B2C, city-by-city) share one curriculum but live on separate subdomains, with separate funnels, separate Supabase projects, and separate launch plans. Also: how to write execution plans that multiple agents can pick up in parallel — every phase has a Shared Contract, every sub-phase declares the files it owns and the files it must not touch.',
     tech: ['Next.js', 'TypeScript', 'Tailwind', 'Supabase', 'Sanity', 'Stripe', 'Resend', 'Vercel'],
-    liveUrl: 'https://yallocerts-web-sumeetgoenkas-projects.vercel.app',
+    liveUrl: 'https://certs.yallo.co',
     featured: true,
   },
   {
