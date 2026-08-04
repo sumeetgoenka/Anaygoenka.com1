@@ -93,29 +93,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'yallo-ats',
-    title: 'Yallo ATS',
-    tagline: 'AI-powered recruitment infrastructure for a real firm.',
-    description:
-      "A full recruitment ATS and CRM built for Yallo Group, my father's IT staffing firm. The headline feature is Reverse Match — AI that proactively surfaces candidates for roles rather than waiting for a search.",
-    category: 'Web',
-    year: '2025–',
-    accent: '#06B6D4',
-    why:
-      'The team was doing everything manually. I mapped the workflow, designed the data model, and built the system that replaces it.',
-    features: [
-      'Reverse Match — pgvector embeddings match candidates to open roles automatically',
-      'Unified contacts architecture — candidates and clients in one table, not two',
-      'Full ATS pipeline: sourcing, screening, placement, invoicing',
-      'GDPR-compliant data model with organisation-level multi-tenancy',
-      'Built on Next.js, TypeScript, PostgreSQL, Vercel',
-    ],
-    learned:
-      'Designing for real operational constraints is harder than building for yourself. Thirty-one tables, a 26-page spec, and a colleague (Rohit) to keep in sync — proper software, not a side project.',
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'pgvector'],
-    featured: true,
-  },
-  {
     slug: 'yallo-certs',
     title: 'YALLO Certs',
     tagline: 'AI certification prep for individual professionals.',
@@ -136,7 +113,32 @@ export const projects: Project[] = [
     learned:
       'How to split a brand cleanly: YALLO Certs (online, B2C, global) and YALLO Academy (in-person, B2B + premium B2C, city-by-city) share one curriculum but live on separate subdomains, with separate funnels, separate Supabase projects, and separate launch plans. Also: how to write execution plans that multiple agents can pick up in parallel — every phase has a Shared Contract, every sub-phase declares the files it owns and the files it must not touch.',
     tech: ['Next.js', 'TypeScript', 'Tailwind', 'Supabase', 'Sanity', 'Stripe', 'Resend', 'Vercel'],
-    liveUrl: 'https://certs.yallo.co',
+    liveUrl: 'https://academy.yallo.co',
+    featured: true,
+  },
+  {
+    slug: 'yallo-phone',
+    title: 'YALLO Phone',
+    tagline: 'A company softphone that works everywhere.',
+    description:
+      'A full calling and messaging platform for Yallo Group — a browser softphone plus native iOS and Android apps, all on one Twilio backbone. Calls, SMS, shared contacts, and voicemails that transcribe and summarise themselves.',
+    category: 'Web',
+    year: '2026',
+    accent: '#3B82F6',
+    why:
+      'A recruitment firm lives on the phone. The team was spread across mobiles and personal numbers, with no shared history and nothing written down. I built the phone system so every call, text, and voicemail lands in one place the whole company can see.',
+    features: [
+      'Browser softphone on the Twilio Voice SDK — Opus codec, roaming edge selection, live call-quality warnings',
+      'Native iOS and Android apps sharing the same Fastify + Prisma backend',
+      'Voicemail transcription via Deepgram, then summarised with Claude',
+      'Two-way SMS, shared contacts, and full call history',
+      'Number scoring — a heuristic that ranks how memorable a number is, so the nicest ones get offered first',
+      'Admin dashboard, in-app bug reports, and push notifications',
+    ],
+    learned:
+      'How to debug something you cannot see. Calls to India sounded fuzzy and my first theory was carrier routing — plausible, expensive to act on, and wrong. Turning on Twilio Voice Insights and reading the actual per-leg jitter showed the carrier was the cleanest part of the call and the problem was the caller’s own uplink. Measure before you spend.',
+    tech: ['TypeScript', 'Fastify', 'Prisma', 'Twilio', 'React', 'React Native', 'Swift', 'Deepgram', 'Claude'],
+    liveUrl: 'https://phone.yallo.co',
     featured: true,
   },
   {
@@ -159,6 +161,29 @@ export const projects: Project[] = [
       'Video is a brutal editor. If the explanation is shaky, it shows. I learned to plan tighter, cut harder, and lead with the punchline.',
     tech: ['YouTube'],
     liveUrl: 'https://www.youtube.com/@AnayTheTutor',
+  },
+  {
+    slug: 'yallo-ats',
+    title: 'Yallo ATS',
+    tagline: 'AI-powered recruitment infrastructure for a real firm.',
+    description:
+      "A full recruitment ATS and CRM built for Yallo Group, my father's IT staffing firm. The headline feature is Reverse Match — AI that proactively surfaces candidates for roles rather than waiting for a search.",
+    category: 'Web',
+    year: '2025–',
+    accent: '#06B6D4',
+    why:
+      'The team was doing everything manually. I mapped the workflow, designed the data model, and built the system that replaces it.',
+    features: [
+      'Reverse Match — pgvector embeddings match candidates to open roles automatically',
+      'Unified contacts architecture — candidates and clients in one table, not two',
+      'Full ATS pipeline: sourcing, screening, placement, invoicing',
+      'GDPR-compliant data model with organisation-level multi-tenancy',
+      'Built on Next.js, TypeScript, PostgreSQL, Vercel',
+    ],
+    learned:
+      'Designing for real operational constraints is harder than building for yourself. Thirty-one tables, a 26-page spec, and a colleague (Rohit) to keep in sync — proper software, not a side project.',
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'pgvector'],
+    featured: true,
   },
 ];
 
