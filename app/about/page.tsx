@@ -66,7 +66,7 @@ export default function AboutPage() {
 
             <p>
               I teach too.{' '}
-              <a href="https://www.youtube.com/@AnayTheTutor" target="_blank" rel="noreferrer" className="text-[color:var(--ink)] link-sweep">
+              <a href="https://www.youtube.com/@CoolestAnay" target="_blank" rel="noreferrer" className="text-[color:var(--ink)] link-sweep">
                 AnayTheTutor
               </a>{' '}
               is where I figure out whether I actually understand something by trying to explain it.

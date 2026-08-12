@@ -160,7 +160,7 @@ export const projects: Project[] = [
     learned:
       'Video is a brutal editor. If the explanation is shaky, it shows. I learned to plan tighter, cut harder, and lead with the punchline.',
     tech: ['YouTube'],
-    liveUrl: 'https://www.youtube.com/@AnayTheTutor',
+    liveUrl: 'https://www.youtube.com/@CoolestAnay',
   },
   {
     slug: 'yallo-ats',

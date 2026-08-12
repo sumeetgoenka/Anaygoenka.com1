@@ -30,7 +30,7 @@ export default function Footer() {
               <p className="font-mono text-xs text-[color:var(--mute)] mb-3">Elsewhere</p>
               <ul className="space-y-2 text-sm">
                 <li><a href="https://github.com/anaygoenka" target="_blank" rel="noreferrer" className="text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors">GitHub</a></li>
-                <li><a href="https://www.youtube.com/@AnayTheTutor" target="_blank" rel="noreferrer" className="text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors">YouTube</a></li>
+                <li><a href="https://www.youtube.com/@CoolestAnay" target="_blank" rel="noreferrer" className="text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors">YouTube</a></li>
                 <li><a href="https://focusdragon.vercel.app" target="_blank" rel="noreferrer" className="text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors">FocusDragon</a></li>
                 <li><a href="https://nudge-daily.vercel.app" target="_blank" rel="noreferrer" className="text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors">Nudge</a></li>
               </ul>
