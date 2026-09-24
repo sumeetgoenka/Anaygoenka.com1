@@ -27,8 +27,8 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Anay Goenka — builder, student, occasional nuisance',
   description:
-    "I'm Anay — a 13-year-old developer in Dubai. I build macOS apps, websites, and teaching videos. This is where I keep my work.",
-  keywords: ['Anay Goenka', 'FocusDragon', 'Nudge', 'HappyStudy', 'Dubai', 'developer', 'macOS'],
+    "I'm Anay — a 14-year-old developer in Dubai. I build macOS apps, websites, and teaching videos. This is where I keep my work.",
+  keywords: ['Anay Goenka', 'FocusDragon', 'HappyStudy', 'Dubai', 'developer', 'macOS'],
   authors: [{ name: 'Anay Goenka' }],
   openGraph: {
     title: 'Anay Goenka',

@@ -63,10 +63,10 @@ export default function Home() {
           </Reveal>
           <Reveal className="md:col-span-9" delay={0.1}>
             <p className="font-display text-[1.9rem] leading-[1.1] md:text-[3.4rem] md:leading-[1.06] text-[color:var(--ink)] text-balance">
-              I&apos;m <span className="text-[color:var(--accent)]">thirteen</span>. I started
+              I&apos;m <span className="text-[color:var(--accent)]">fourteen</span>. I started
               coding for fun, then for real, then because I couldn&apos;t stop. I ship things
               when they solve a problem I actually have — which is why the blocker I use most is
-              one I had to build myself, and the HUD on my menu bar started as a sketch at midnight.
+              one I had to build myself.
             </p>
             <Link
               href="/about"

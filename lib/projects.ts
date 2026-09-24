@@ -44,31 +44,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'nudge',
-    title: 'Nudge',
-    tagline: 'A floating HUD for your day.',
-    description:
-      'A macOS menu-bar companion that keeps your schedule, todos, and focus visible without getting in the way. Time blocks, checklists, 20-20-20 eye breaks, hydration reminders.',
-    category: 'App',
-    year: '2025',
-    accent: '#8B5CF6',
-    why:
-      "Calendar apps live in tabs I never open. I wanted something that just sits there and tells me what I should be doing right now — and what's coming next.",
-    features: [
-      'Floating always-on-top widget with schedule and countdown to next block',
-      'Todo mode with priorities, descriptions, and quick-add',
-      'Personalised greetings and tone throughout the day',
-      'Optional 20-20-20 eye-break reminders',
-      'Gentle hydration nudges anchored to wall-clock times',
-      'Sparkle auto-updates — never re-download',
-    ],
-    learned:
-      'Menu-bar apps are a different beast from windowed apps — always-on-top windows, click-through regions, and wall-clock scheduling on a sleeping laptop. First app I shipped with Sparkle auto-updates.',
-    tech: ['Swift', 'AppKit', 'macOS', 'Sparkle'],
-    liveUrl: 'https://nudge-daily.vercel.app',
-    featured: true,
-  },
-  {
     slug: 'happystudy',
     title: 'HappyStudy',
     tagline: 'A revision platform built for one school.',
@@ -93,32 +68,32 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'yallo-certs',
-    title: 'YALLO Certs',
+    slug: 'yallo-ai-academy',
+    title: 'Yallo AI Academy',
     tagline: 'AI certification prep for individual professionals.',
     description:
-      "A B2C online product for professionals preparing for the AI certification economy — starting with independent Claude Certified Architect preparation. Self-paced lessons, a six-domain readiness assessment, and a 4-week live cohort with mentors. Sister to YALLO Academy (in-person tutoring at academy.yallo.ai).",
+      "A B2C online product for professionals preparing for the AI certification economy — starting with independent Claude Certified Architect preparation. Self-paced lessons, a six-domain readiness assessment, and a 4-week live cohort with mentors.",
     category: 'Web',
     year: '2026',
     accent: '#D4A843',
     why:
-      "Vendor AI certifications are emerging fast; enterprise architects need somewhere serious to prepare. Most options are either generic Udemy courses or vendor-locked academies. YALLO Certs is the architecture-led, deployment-ready middle ground — an independent preparation product that doesn't pretend to be the official exam.",
+      "Vendor AI certifications are emerging fast; enterprise architects need somewhere serious to prepare. Most options are either generic Udemy courses or vendor-locked academies. Yallo AI Academy is the architecture-led, deployment-ready middle ground — an independent preparation product that doesn't pretend to be the official exam.",
     features: [
-      'Six-domain YALLO Readiness Score — Foundations, Prompt & Context, API & Tool Use, Evaluation, Governance, Architecture',
-      'Eight-pathway skill tree with a seven-layer lesson template (Why this matters / Learn / YALLO Lens / Check / Apply / Exam Readiness / Deployability)',
+      'Six-domain Yallo Readiness Score — Foundations, Prompt & Context, API & Tool Use, Evaluation, Governance, Architecture',
+      'Eight-pathway skill tree with a seven-layer lesson template (Why this matters / Learn / Yallo Lens / Check / Apply / Exam Readiness / Deployability)',
       'Founding Cohort: 1 mentor + ~30 globally distributed professionals, four weeks on Zoom, capstone-graded',
       'Independent preparation programme — no vendor endorsement claims, no exam dumps, original questions only',
       'In-house admin dashboard (no HubSpot) on Supabase — leads, pipeline, orders, cohorts, email + webhook logs',
     ],
     learned:
-      'How to split a brand cleanly: YALLO Certs (online, B2C, global) and YALLO Academy (in-person, B2B + premium B2C, city-by-city) share one curriculum but live on separate subdomains, with separate funnels, separate Supabase projects, and separate launch plans. Also: how to write execution plans that multiple agents can pick up in parallel — every phase has a Shared Contract, every sub-phase declares the files it owns and the files it must not touch.',
+      'How to write execution plans that multiple agents can pick up in parallel — every phase has a Shared Contract, every sub-phase declares the files it owns and the files it must not touch.',
     tech: ['Next.js', 'TypeScript', 'Tailwind', 'Supabase', 'Sanity', 'Stripe', 'Resend', 'Vercel'],
     liveUrl: 'https://academy.yallo.co',
     featured: true,
   },
   {
     slug: 'yallo-phone',
-    title: 'YALLO Phone',
+    title: 'Yallo Phone',
     tagline: 'A company softphone that works everywhere.',
     description:
       'A full calling and messaging platform for Yallo Group — a browser softphone plus native iOS and Android apps, all on one Twilio backbone. Calls, SMS, shared contacts, and voicemails that transcribe and summarise themselves.',
@@ -161,29 +136,6 @@ export const projects: Project[] = [
       'Video is a brutal editor. If the explanation is shaky, it shows. I learned to plan tighter, cut harder, and lead with the punchline.',
     tech: ['YouTube'],
     liveUrl: 'https://www.youtube.com/@CoolestAnay',
-  },
-  {
-    slug: 'yallo-ats',
-    title: 'Yallo ATS',
-    tagline: 'AI-powered recruitment infrastructure for a real firm.',
-    description:
-      "A full recruitment ATS and CRM built for Yallo Group, my father's IT staffing firm. The headline feature is Reverse Match — AI that proactively surfaces candidates for roles rather than waiting for a search.",
-    category: 'Web',
-    year: '2025–',
-    accent: '#06B6D4',
-    why:
-      'The team was doing everything manually. I mapped the workflow, designed the data model, and built the system that replaces it.',
-    features: [
-      'Reverse Match — pgvector embeddings match candidates to open roles automatically',
-      'Unified contacts architecture — candidates and clients in one table, not two',
-      'Full ATS pipeline: sourcing, screening, placement, invoicing',
-      'GDPR-compliant data model with organisation-level multi-tenancy',
-      'Built on Next.js, TypeScript, PostgreSQL, Vercel',
-    ],
-    learned:
-      'Designing for real operational constraints is harder than building for yourself. Thirty-one tables, a 26-page spec, and a colleague (Rohit) to keep in sync — proper software, not a side project.',
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'pgvector'],
-    featured: true,
   },
 ];
 

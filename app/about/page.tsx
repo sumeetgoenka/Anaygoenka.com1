@@ -26,7 +26,7 @@ export default function AboutPage() {
               </div>
               <div className="py-4">
                 <dt className="font-mono text-xs text-[color:var(--mute)] mb-1.5">age</dt>
-                <dd className="text-[color:var(--ink-soft)]">13</dd>
+                <dd className="text-[color:var(--ink-soft)]">14</dd>
               </div>
               <div className="py-4">
                 <dt className="font-mono text-xs text-[color:var(--mute)] mb-1.5">mostly writes</dt>
@@ -54,14 +54,10 @@ export default function AboutPage() {
 
             <p>
               These days I mostly build{' '}
-              <span className="text-[color:var(--ink)]">things I actually want to use</span>. My menu bar
-              runs an app I wrote (
-              <Link href="/work/nudge" className="text-[color:var(--accent)] link-sweep">Nudge</Link>). My
+              <span className="text-[color:var(--ink)]">things I actually want to use</span>. My
               distraction blocker is one I had to build myself because every other one was too easy to
               disable (
               <Link href="/work/focusdragon" className="text-[color:var(--accent)] link-sweep">FocusDragon</Link>).
-              When my father&apos;s recruitment firm needed an ATS, I designed the data model and{' '}
-              <Link href="/work/yallo-ats" className="text-[color:var(--accent)] link-sweep">built it</Link>.
             </p>
 
             <p>
